@@ -10,16 +10,7 @@ if(process.env.NODE_ENV === 'development'){
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  throw new Error;
-  res.send('Here we go again!');
-})
-
 app.use('/api/v1/messages', messagesRoutes);
-
-app.post('/', (req, res) => {
-  res.json({message: 'data is data.', data: req.body});
-})
 
 app.use('*', (req, res) => {
   res.status(404).json({msg: "route not found"});
