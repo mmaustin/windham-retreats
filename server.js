@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 require('dotenv').config();
-
+const messagesRoutes = require('./routes/messagesRoutes')
 
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'));
@@ -11,8 +11,11 @@ if(process.env.NODE_ENV === 'development'){
 app.use(express.json());
 
 app.get('/', (req, res) => {
+  throw new Error;
   res.send('Here we go again!');
 })
+
+app.use('/api/v1/messages', messagesRoutes);
 
 app.post('/', (req, res) => {
   res.json({message: 'data is data.', data: req.body});
