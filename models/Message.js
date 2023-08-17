@@ -7,6 +7,7 @@ const MessageSchema = new mongoose.Schema({
     trim: true,
   },
   content: {
+    type: String,
     required: [true, 'Please type your message.'],
     maxLength: 300
   }
