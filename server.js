@@ -16,12 +16,12 @@ app.use(express.json());
 
 app.use('/api/v1/messages', messagesRoutes);
 
-app.use('/api/v1/vite', (req, res) => {
-  res.status(200).json({data: {name: 'mccray'}});
-})
-app.use('/api/v1/vigor', (req, res) => {
-  res.status(200).json({data: {name: 'martin'}});
-})
+// app.use('/api/v1/vite', (req, res) => {
+//   res.status(200).json({data: {name: 'mccray'}});
+// })
+// app.use('/api/v1/vigor', (req, res) => {
+//   res.status(200).json({data: {name: 'martin'}});
+// })
 
 app.use('*', (req, res) => {
   res.status(404).json({msg: "route not found"});
