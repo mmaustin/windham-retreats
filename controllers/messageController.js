@@ -19,12 +19,12 @@ const getMessages = async(req, res) =>{
 };
 
 const getMessage = async(req, res) =>{
-  const {id} = req.params;
-
-  const message = await Message.findById(id);
-
+  const {id: messageId} = req.params;
+  
+  const message = await Message.findById({_id: messageId});
+  
   if (!message) {
-    throw new NotFoundError(`No message with id :${id}`)
+    throw new NotFoundError(`No message with id :${messageId}`)
   }
 
   res.status(StatusCodes.OK).json({ message });
