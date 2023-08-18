@@ -1,9 +1,10 @@
 const { StatusCodes } = require("http-status-codes");
 
 const errorHandlerMiddleware = (err, req, res, next) => {
+  console.log(err.value);
     const defaultError = {
       statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: err.message || 'Something went wrong, try again later',
+      msg: `Object with value ${err.value} doesn't appear to exist.`,
     }
     if (err.name === 'ValidationError') {
       defaultError.statusCode = StatusCodes.BAD_REQUEST

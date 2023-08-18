@@ -19,13 +19,12 @@ const getMessages = async(req, res) =>{
 };
 
 const getMessage = async(req, res) =>{
-  const {id: messageId} = req.params;
+  const {id} = req.params;
 
-  const message = await Message.findById({_id: messageId});
+  const message = await Message.findById(id);
 
   if (!message) {
-    res.status(400).json({msg: 'Message not found.'});
-    return;
+    throw new NotFoundError(`No message with id :${id}`)
   }
 
   res.status(StatusCodes.OK).json({ message });
@@ -38,8 +37,7 @@ const deleteMessage = async(req, res) =>{
   const message = await Message.findByIdAndDelete({_id: messageId});
 
   if (!message) {
-    res.status(400).json({msg: 'Message not found.'});
-    return;
+    throw new NotFoundError(`No work with id :${messageId}`)
   }
 
   const messages = await Message.find({});
