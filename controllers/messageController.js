@@ -14,13 +14,14 @@ const createMessage = async(req, res) =>{
 };
 
 const getMessages = async(req, res) =>{
-  res.json({message: 'we have the messages.'})
+  const messages = await Message.find({});
+  res.status(200).json({ messages });
 };
 
 const getMessage = async(req, res) =>{
   const {id: messageId} = req.params;
 
-  const message = await Message.findOne({_id: messageId});
+  const message = await Message.findById({_id: messageId});
 
   if (!message) {
     res.status(400).json({msg: 'Message not found.'});
@@ -32,7 +33,17 @@ const getMessage = async(req, res) =>{
 
 
 const deleteMessage = async(req, res) =>{
-  res.json({message: 'message deleted.'})
+  const {id: messageId} = req.params;
+
+  const message = await Message.findByIdAndDelete({_id: messageId});
+
+  if (!message) {
+    res.status(400).json({msg: 'Message not found.'});
+    return;
+  }
+
+  const messages = await Message.find({});
+  res.status(200).json({ messages });
 };
 
 module.exports ={
