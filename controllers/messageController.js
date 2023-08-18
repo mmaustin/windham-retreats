@@ -1,12 +1,12 @@
 const Message = require('../models/Message');
-
+const {StatusCodes} = require('http-status-codes');
+const { BadRequestError, NotFoundError} = require('../errors/index');
 
 const createMessage = async(req, res) =>{
   const { messenger, content } = req.body;
-
+  
   if(!messenger || !content){
-    res.status(400).json({msg: 'Please provide all values.'});
-    return;
+    throw new BadRequestError('Please provide all values');
   }
 
   const message = await Message.create(req.body);
@@ -15,7 +15,7 @@ const createMessage = async(req, res) =>{
 
 const getMessages = async(req, res) =>{
   const messages = await Message.find({});
-  res.status(200).json({ messages });
+  res.status(StatusCodes.OK).json({ messages });
 };
 
 const getMessage = async(req, res) =>{
@@ -28,7 +28,7 @@ const getMessage = async(req, res) =>{
     return;
   }
 
-  res.status(200).json({ message });
+  res.status(StatusCodes.OK).json({ message });
 };
 
 
@@ -43,7 +43,7 @@ const deleteMessage = async(req, res) =>{
   }
 
   const messages = await Message.find({});
-  res.status(200).json({ messages });
+  res.status(StatusCodes.OK).json({ messages });
 };
 
 module.exports ={

@@ -5,6 +5,7 @@ const morgan = require('morgan');
 require('dotenv').config();
 const messagesRoutes = require('./routes/messagesRoutes');
 const connectDB = require('./db/connect');
+const errorHandlerMiddleware = require('./middleware/error-handler');
 
 
 if(process.env.NODE_ENV === 'development'){
@@ -26,10 +27,12 @@ app.use('*', (req, res) => {
   res.status(404).json({msg: "route not found"});
 })
 
-app.use((err, req, res, next)=>{
-  // console.log(err);
-  res.status(500).json({msg: 'something went wrong'})
-})
+// app.use((err, req, res, next)=>{
+//   // console.log(err);
+//   res.status(500).json({msg: 'something went wrong'})
+// })
+
+app.use(errorHandlerMiddleware);
 
 const port = process.env.PORT || 5001;
 
