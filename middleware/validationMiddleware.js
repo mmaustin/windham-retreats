@@ -1,6 +1,6 @@
 const { BadRequestError } = require("../errors");
-const { body, validationResult} = require('express-validator');
-
+const { body, param, validationResult} = require('express-validator');
+const mongoose = require('mongoose');
 
 const withValidationErrors = (validationValues) => {
   return [
@@ -16,9 +16,15 @@ const withValidationErrors = (validationValues) => {
   ];
 };
 
-const validateMessage = withValidationErrors([
+const validateMessageInput = withValidationErrors([
   body('messenger').notEmpty().withMessage('messenger is required'),
   body('content').notEmpty().withMessage('content is required'),
 ]);
 
-module.exports = { validateMessage };
+const validateMessageId = withValidationErrors([
+  param('id')
+    .custom(value => mongoose.Types.ObjectId.isValid(value))
+    .withMessage('invalid Id')
+]);
+
+module.exports = { validateMessageInput, validateMessageId };

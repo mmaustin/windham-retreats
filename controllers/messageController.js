@@ -3,11 +3,11 @@ const {StatusCodes} = require('http-status-codes');
 const { BadRequestError, NotFoundError} = require('../errors/index');
 
 const createMessage = async(req, res) =>{
-  const { messenger, content } = req.body;
+  // const { messenger, content } = req.body;
   
-  if(!messenger || !content){
-    throw new BadRequestError('Please provide all values');
-  }
+  // if(!messenger || !content){
+  //   throw new BadRequestError('Please provide all values');
+  // }
 
   const message = await Message.create(req.body);
   res.status(201).json({message});
