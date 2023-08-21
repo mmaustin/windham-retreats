@@ -1,6 +1,7 @@
-const { BadRequestError } = require("../errors");
+const { BadRequestError, NotFoundError } = require("../errors");
 const { body, param, validationResult} = require('express-validator');
 const mongoose = require('mongoose');
+const Message = require('../models/Message');
 
 const withValidationErrors = (validationValues) => {
   return [
@@ -22,9 +23,13 @@ const validateMessageInput = withValidationErrors([
 ]);
 
 const validateMessageId = withValidationErrors([
-  param('id')
-    .custom(value => mongoose.Types.ObjectId.isValid(value))
-    .withMessage('invalid Id')
+  param('id').custom(async value => { 
+    const isValidId = mongoose.Types.ObjectId.isValid(value);
+    if(!isValidId) throw new BadRequestError('invalid id configuration');
+    const message = await Message.findById(value);
+
+    if(!job) throw new NotFoundError(`no message with id: ${value}`)
+  }),
 ]);
 
 module.exports = { validateMessageInput, validateMessageId };
