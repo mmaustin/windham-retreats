@@ -10,6 +10,11 @@ const withValidationErrors = (validationValues) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()){
         const errorMessages = errors.array().map(error => error.msg);
+
+        if(errorMessages[0].startsWith('no message')){
+          throw new NotFoundError(errorMessages);
+        }
+
         throw new BadRequestError(errorMessages);
       }
       next();
@@ -28,7 +33,7 @@ const validateMessageId = withValidationErrors([
     if(!isValidId) throw new BadRequestError('invalid id configuration');
     const message = await Message.findById(value);
 
-    if(!job) throw new NotFoundError(`no message with id: ${value}`)
+    if(!message) throw new NotFoundError(`no message with id: ${value}`)
   }),
 ]);
 

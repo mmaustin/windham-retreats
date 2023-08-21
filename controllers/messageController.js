@@ -13,17 +13,15 @@ const getMessages = async(req, res) => {
 };
 
 const getMessage = async(req, res) => {
-  const {id: messageId} = req.params;
   
-  const message = await Message.findById({_id: messageId});
+  const message = await Message.findById(req.params.id);
   res.status(StatusCodes.OK).json({ message });
 };
 
 
 const deleteMessage = async(req, res) => {
-  const {id: messageId} = req.params;
 
-  const message = await Message.findByIdAndDelete({_id: messageId});
+  const message = await Message.findByIdAndDelete(req.params.id);
 
   const messages = await Message.find({});
   res.status(StatusCodes.OK).json({ messages });
