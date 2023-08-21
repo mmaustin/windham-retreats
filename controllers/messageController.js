@@ -24,7 +24,7 @@ const getMessage = async(req, res) =>{
   const message = await Message.findById({_id: messageId});
   
   if (!message) {
-    throw new NotFoundError(`No message with id :${messageId}`)
+    throw new NotFoundError(`No message with id: ${messageId}`)
   }
 
   res.status(StatusCodes.OK).json({ message });
@@ -37,7 +37,7 @@ const deleteMessage = async(req, res) =>{
   const message = await Message.findByIdAndDelete({_id: messageId});
 
   if (!message) {
-    throw new NotFoundError(`No work with id :${messageId}`)
+    throw new NotFoundError(`No message with id: ${messageId}`)
   }
 
   const messages = await Message.find({});

@@ -6,7 +6,7 @@ require('dotenv').config();
 const messagesRoutes = require('./routes/messagesRoutes');
 const connectDB = require('./db/connect');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-
+const { validateMessage } = require('./middleware/validationMiddleware');
 
 
 if(process.env.NODE_ENV === 'development'){

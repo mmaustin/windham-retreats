@@ -16,4 +16,9 @@ const withValidationErrors = (validationValues) => {
   ];
 };
 
-module.exports = withValidationErrors;
+const validateMessage = withValidationErrors([
+  body('messenger').notEmpty().withMessage('messenger is required'),
+  body('content').notEmpty().withMessage('content is required'),
+]);
+
+module.exports = { validateMessage };

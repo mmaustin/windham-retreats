@@ -4,7 +4,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
   console.log(err);
     const defaultError = {
       statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
-      msg: `Object with value ${err.value._id} doesn't appear to exist.`,
+      msg: err.message || `Object doesn't appear to exist.`,
     }
     if (err.name === 'ValidationError') {
       defaultError.statusCode = StatusCodes.BAD_REQUEST
