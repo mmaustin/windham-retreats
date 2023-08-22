@@ -6,7 +6,7 @@ require('dotenv').config();
 const messagesRoutes = require('./routes/messagesRoutes');
 const connectDB = require('./db/connect');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const { validateMessage } = require('./middleware/validationMiddleware');
+const authRoutes = require('./routes/userRoutes')
 
 
 if(process.env.NODE_ENV === 'development'){
@@ -16,6 +16,7 @@ if(process.env.NODE_ENV === 'development'){
 app.use(express.json());
 
 app.use('/api/v1/messages', messagesRoutes);
+app.use('/api/v1/auth', authRoutes);
 
 // app.use('/api/v1/vite', (req, res) => {
 //   res.status(200).json({data: {name: 'mccray'}});
