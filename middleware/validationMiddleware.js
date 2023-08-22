@@ -2,6 +2,7 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const { body, param, validationResult} = require('express-validator');
 const mongoose = require('mongoose');
 const Message = require('../models/Message');
+//const User = require("../models/User");
 
 const withValidationErrors = (validationValues) => {
   return [
@@ -37,4 +38,10 @@ const validateMessageId = withValidationErrors([
   }),
 ]);
 
-module.exports = { validateMessageInput, validateMessageId };
+const validateUserRegistrationInput = withValidationErrors([
+  body('name').notEmpty().withMessage('name is required'),
+  body('email').notEmpty().withMessage('email is required'),
+  body('password').notEmpty().withMessage('password is required'),
+])
+
+module.exports = { validateMessageInput, validateMessageId, validateUserRegistrationInput };
