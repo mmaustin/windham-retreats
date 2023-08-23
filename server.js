@@ -9,6 +9,7 @@ const errorHandlerMiddleware = require('./middleware/error-handler');
 const authRoutes = require('./routes/userRoutes')
 
 
+
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'));
 }

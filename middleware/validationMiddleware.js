@@ -2,7 +2,7 @@ const { BadRequestError, NotFoundError } = require("../errors");
 const { body, param, validationResult} = require('express-validator');
 const mongoose = require('mongoose');
 const Message = require('../models/Message');
-//const User = require("../models/User");
+const User = require("../models/User");
 
 const withValidationErrors = (validationValues) => {
   return [
@@ -38,10 +38,17 @@ const validateMessageId = withValidationErrors([
   }),
 ]);
 
-const validateUserRegistrationInput = withValidationErrors([
+const validateRegisterInput = withValidationErrors([
   body('name').notEmpty().withMessage('name is required'),
-  body('email').notEmpty().withMessage('email is required'),
-  body('password').notEmpty().withMessage('password is required'),
+  body('email').notEmpty().withMessage('email is required').isEmail().withMessage('invalid email format')
+  .custom(async (email) => {
+    const user = await User.findOne({email});
+    if(user){
+      throw new BadRequestError('email already in use')
+    }
+  }),
+  body('password').notEmpty().withMessage('password is required')
+  .isLength({min: 8}).withMessage('password must be at least 8 characters long'),
 ])
 
-module.exports = { validateMessageInput, validateMessageId, validateUserRegistrationInput };
+module.exports = { validateMessageInput, validateMessageId, validateRegisterInput };
