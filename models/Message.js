@@ -8,7 +8,11 @@ const MessageSchema = new mongoose.Schema({
   content: {
     type: String,
     maxLength: 300
-  }
+  },
+  createdBy: {
+    type: mongoose.Types.ObjectId,
+    ref: 'User',
+  },
   },
   {timestamps: true}
 );

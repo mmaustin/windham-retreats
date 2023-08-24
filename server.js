@@ -6,9 +6,8 @@ require('dotenv').config();
 const messagesRoutes = require('./routes/messagesRoutes');
 const connectDB = require('./db/connect');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const authRoutes = require('./routes/userRoutes')
-
-
+const authRoutes = require('./routes/userRoutes');
+const authenticateUser = require('./middleware/authMiddleware');
 
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'));
@@ -16,7 +15,7 @@ if(process.env.NODE_ENV === 'development'){
 
 app.use(express.json());
 
-app.use('/api/v1/messages', messagesRoutes);
+app.use('/api/v1/messages', authenticateUser ,messagesRoutes);
 app.use('/api/v1/auth', authRoutes);
 
 // app.use('/api/v1/vite', (req, res) => {
