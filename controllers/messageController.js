@@ -3,13 +3,14 @@ const {StatusCodes} = require('http-status-codes');
 const { BadRequestError, NotFoundError} = require('../errors/index');
 
 const createMessage = async(req, res) => {
+  req.body.createdBy = req.user.userId;
   const message = await Message.create(req.body);
   res.status(201).json({message});
 };
 
 const getMessages = async(req, res) => {
-  console.log(req.user);
-  const messages = await Message.find({});
+  
+  const messages = await Message.find({createdBy: req.user.userId});
   res.status(StatusCodes.OK).json({ messages });
 };
 
