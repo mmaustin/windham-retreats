@@ -8,11 +8,13 @@ const connectDB = require('./db/connect');
 const errorHandlerMiddleware = require('./middleware/error-handler');
 const authRoutes = require('./routes/userRoutes');
 const authenticateUser = require('./middleware/authMiddleware');
+const cookieParser = require('cookie-parser');
 
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'));
 }
 
+app.use(cookieParser());
 app.use(express.json());
 
 app.use('/api/v1/messages', authenticateUser ,messagesRoutes);

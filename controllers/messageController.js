@@ -8,7 +8,7 @@ const createMessage = async(req, res) => {
 };
 
 const getMessages = async(req, res) => {
-  
+  console.log(req.user);
   const messages = await Message.find({});
   res.status(StatusCodes.OK).json({ messages });
 };

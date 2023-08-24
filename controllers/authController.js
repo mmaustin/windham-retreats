@@ -3,7 +3,7 @@ const User = require("../models/User");
 const bcrypt = require('bcryptjs');
 const { hashPassword, comparePassword } = require("../utils/passwordUtils");
 const { UnAuthenticatedError } = require("../errors");
-const createJWT = require("../utils/tokenUtils");
+const { createJWT } = require("../utils/tokenUtils");
 
 const register = async (req, res) => {
 
