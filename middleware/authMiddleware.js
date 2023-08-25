@@ -1,7 +1,7 @@
 const { UnAuthenticatedError } = require("../errors");
 const { verifyJWT } = require("../utils/tokenUtils");
 
-const authenticateUser = async (req, res, next) => {
+const authenticateUser = (req, res, next) => {
   const {token} = req.cookies;
   if(!token) throw new UnAuthenticatedError('authentication invalid');
 
