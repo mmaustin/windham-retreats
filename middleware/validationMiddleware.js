@@ -1,4 +1,4 @@
-const { BadRequestError, NotFoundError } = require("../errors");
+const { BadRequestError, NotFoundError, UnauthorizedError } = require("../errors");
 const { body, param, validationResult} = require('express-validator');
 const mongoose = require('mongoose');
 const Message = require('../models/Message');
@@ -16,6 +16,10 @@ const withValidationErrors = (validationValues) => {
           throw new NotFoundError(errorMessages);
         }
 
+        if(errorMessages[0].startsWith('not authorized')){
+          throw new UnauthorizedError('not authorized to access this route');
+        }
+
         throw new BadRequestError(errorMessages);
       }
       next();
@@ -29,12 +33,16 @@ const validateMessageInput = withValidationErrors([
 ]);
 
 const validateMessageId = withValidationErrors([
-  param('id').custom(async value => { 
+  param('id').custom(async (value, { req }) => { 
     const isValidId = mongoose.Types.ObjectId.isValid(value);
     if(!isValidId) throw new BadRequestError('invalid id configuration');
     const message = await Message.findById(value);
 
-    if(!message) throw new NotFoundError(`no message with id: ${value}`)
+    if(!message) throw new NotFoundError(`no message with id: ${value}`);
+
+    const isAdmin = req.user.role === 'admin';
+    const isOwner = req.user.userId === message.createdBy.toString();
+    if(!isAdmin && !isOwner) throw new UnauthorizedError('not authorized to access this route');
   }),
 ]);
 
