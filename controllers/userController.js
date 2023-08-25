@@ -3,7 +3,9 @@ const User = require("../models/User");
 const Message = require("../models/Message");
 
 const getCurrentUser = async (req, res) => {
-  res.status(StatusCodes.OK).json({msg: "get current user"})
+  const user = await User.findOne({_id: req.user.userId});
+  const userWithoutPassword = user.toJSON();
+  res.status(StatusCodes.OK).json({ user: userWithoutPassword });
 };
 
 const getApplicationStats = async (req, res) => {
