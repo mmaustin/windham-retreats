@@ -13,7 +13,9 @@ const getApplicationStats = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const updatedUser = await User.findByIdAndUpdate(req.user.userId, req.body);
+  const obj = {...req.body};
+  delete obj.password;
+  const updatedUser = await User.findByIdAndUpdate(req.user.userId, obj);
   res.status(StatusCodes.OK).json({msg: 'user updated'})
 };
 
