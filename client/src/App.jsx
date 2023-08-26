@@ -6,15 +6,15 @@ import { useState, useEffect } from 'react'
 function App() {
   const [count, setCount] = useState(0);
 
-  const getObject = async() => {
-    const response = await fetch("/api/v1/messages");
-    const data = await response.json();
-    console.log(data);
-  }
+  // const getObject = async() => {
+  //   const response = await fetch("/api/v1/messages");
+  //   const data = await response.json();
+  //   console.log(data);
+  // }
 
-  useEffect(() => {
-    getObject();
-  }, []);
+  // useEffect(() => {
+  //   getObject();
+  // }, []);
 
   return (
     <>
