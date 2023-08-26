@@ -18,7 +18,8 @@ if(process.env.NODE_ENV === 'development'){
 app.use(cookieParser());
 app.use(express.json());
 
-app.use('/api/v1/messages', authenticateUser ,messagesRoutes);
+//replace authenticateUser middleware after proxy and axios testing!!!!!
+app.use('/api/v1/messages', authenticateUser , messagesRoutes);
 app.use('/api/v1/users', authenticateUser , userRoutes);
 app.use('/api/v1/auth', authRoutes);
 
