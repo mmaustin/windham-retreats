@@ -10,7 +10,7 @@ const createMessage = async(req, res) => {
 
 const getMessages = async(req, res) => {
   
-  const messages = await Message.find({createdBy: req.user.userId});
+  const messages = await Message.find({});
   res.status(StatusCodes.OK).json({ messages });
 };
 

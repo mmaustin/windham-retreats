@@ -6,10 +6,10 @@ require('dotenv').config();
 const messagesRoutes = require('./routes/messagesRoutes');
 const connectDB = require('./db/connect');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-const authRoutes = require('./routes/userRoutes');
+const authRoutes = require('./routes/authRoutes');
 const authenticateUser = require('./middleware/authMiddleware');
 const cookieParser = require('cookie-parser');
-const userRoutes = require('./routes/personalizedRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 if(process.env.NODE_ENV === 'development'){
   app.use(morgan('dev'));

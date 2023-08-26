@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0);
 
   const getObject = async() => {
-    const response = await fetch("/api/v1/vigor");
+    const response = await fetch("/api/v1/messages");
     const data = await response.json();
     console.log(data);
   }
