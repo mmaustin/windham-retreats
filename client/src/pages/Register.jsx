@@ -1,18 +1,18 @@
-
+import getFormValues from "../utils/getFormValues";
 
 const Register = () => {
 
   const onSubmit = e => {
     e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    //console.log(Object.fromEntries(formData));
-    const values = [...formData.values()];
-    const isEmpty = values.includes('');
+
+    const {isEmpty, data} = getFormValues(e.currentTarget);
+     
     if(isEmpty) {
       console.log('please provide all values');
       return;
     }
-    console.log(values);
+
+    console.log(data);
     e.currentTarget.reset();
   }
 
