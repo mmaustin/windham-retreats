@@ -55,6 +55,16 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+figure img {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+/* figure {
+  border: 5px solid brown;
+} */
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
