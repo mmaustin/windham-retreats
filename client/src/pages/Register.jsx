@@ -1,25 +1,32 @@
+import customFetch from "../utils/customFetch";
 import getFormValues from "../utils/getFormValues";
+
 
 const Register = () => {
 
-  const onSubmit = e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    const {isEmpty, data} = getFormValues(e.currentTarget);
+    const {isEmpty, loginData} = getFormValues(e.currentTarget);
      
     if(isEmpty) {
       console.log('please provide all values');
       return;
     }
+    
+    try {
+      const {data} = await customFetch.post('/auth/login', loginData);
+      //const loginData = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
 
-    console.log(data);
-    e.currentTarget.reset();
+    //e.currentTarget.reset();
   }
 
   return (
     <form onSubmit={onSubmit}>
-      <label htmlFor="name"></label>
-      <input type="text" id="name" name="name"/>
       <label htmlFor="email"></label>
       <input type="email" id="email" name="email"/>
       <label htmlFor="password"></label>

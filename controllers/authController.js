@@ -27,7 +27,7 @@ const login = async (req, res) => {
     expires: new Date(Date.now() + oneDay),
   });
   
-  res.status(StatusCodes.OK).json({msg: 'user logged in'});
+  res.status(StatusCodes.OK).json({msg: true});
 };
 
 const logout = (req, res) => {
