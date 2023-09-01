@@ -17,12 +17,12 @@ const Register = () => {
     try {
       const {data} = await customFetch.post('/auth/login', loginData);
       //const loginData = await response.json();
-      console.log(data);
+      if(data.status) console.log('yes');
     } catch (error) {
       console.log(error);
     }
-
     //e.currentTarget.reset();
+
   }
 
   return (
