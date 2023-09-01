@@ -1,8 +1,12 @@
+import { useSelector } from "react-redux";
 import customFetch from "../utils/customFetch";
 import getFormValues from "../utils/getFormValues";
 
 
 const Register = () => {
+
+  const isLoggedIn = useSelector(state => state.loggedIn);
+  console.log(isLoggedIn);
 
   const onSubmit = async (e) => {
     e.preventDefault();
