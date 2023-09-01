@@ -1,6 +1,9 @@
 //import { useState, useEffect } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Register from './pages/Register'
+import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
+import Register from './pages/Register';
+import CheckOut from './pages/CheckOut';
+import { useSelector } from 'react-redux';
+
 // import reactLogo from './assets/react.svg';
 // import yogaWomen from './assets/yoga-women.jpg'
 // import viteLogo from '/vite.svg'
@@ -21,10 +24,13 @@ function App() {
   //   getObject();
   // }, []);
 
+  const isLoggedIn = useSelector(state => state.loggedIn);
+
   return (
     <BrowserRouter>
       <Routes>
-      <Route path='/register' element={<Register />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/checkout' element={isLoggedIn ? < CheckOut /> : <Navigate to="/register"/>} />
       </Routes>
     </BrowserRouter>
     // <figure >

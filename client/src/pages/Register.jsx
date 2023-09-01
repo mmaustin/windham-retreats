@@ -1,9 +1,12 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import customFetch from "../utils/customFetch";
 import getFormValues from "../utils/getFormValues";
+import { setLogin } from "../state";
 
 
 const Register = () => {
+
+  const dispatch = useDispatch();
 
   const isLoggedIn = useSelector(state => state.loggedIn);
   console.log(isLoggedIn);
@@ -19,11 +22,18 @@ const Register = () => {
     }
     
     try {
+      //if async data fetch fells, the error below is an axios error
       const {data} = await customFetch.post('/auth/login', loginData);
       //const loginData = await response.json();
-      if(data.status) console.log('yes');
+      dispatch(setLogin({
+        loggedIn: data.status
+      }))
     } catch (error) {
-      console.log(error);
+      //an axios error whose message can be overwritten
+      if(error){
+        error.message = "coocoo for cocoa puffs!"
+        console.log(error.message);
+      }
     }
     //e.currentTarget.reset();
 
