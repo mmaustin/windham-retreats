@@ -6,7 +6,7 @@ const userIds = [
   new mongoose.Types.ObjectId(),
 ];
 
-const users = [
+const userInstances = [
   {
     _id: userIds[0],
     name: "Jake Williams",
@@ -26,3 +26,5 @@ const users = [
     password: 'jennings'
   }
 ];
+
+module.exports = userInstances;
