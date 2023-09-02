@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 
 const RetreatSchema = mongoose.Schema({
   name: String,
-  data: String,
+  date: String,
   description: String,
+  picturePath: String,
   unitAmount: Number,
+  displayAmount: String,
   },
   {timestamps: true},
 );

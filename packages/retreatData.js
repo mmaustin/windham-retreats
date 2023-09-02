@@ -27,4 +27,20 @@ const userInstances = [
   }
 ];
 
-module.exports = userInstances;
+const retreatIds = [
+  new mongoose.Types.ObjectId(),
+];
+
+const retreatInstances = [
+  {
+    _id: retreatIds[0],
+    name: "Goddess Suite",
+    date: "October 19-22, 2020",
+    description: "Goddess Suite with ensuite bathroom and private balcony",
+    picturePath: "retreat-1",
+    unitAmount: 220000,
+    displayAmount: "$2,200.00"
+  }
+]
+
+module.exports = { userInstances, retreatInstances };

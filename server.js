@@ -11,7 +11,8 @@ const authenticateUser = require('./middleware/authMiddleware');
 const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/userRoutes');
 //const User = require('./models/User');
-//const userInstances = require('./packages/retreatData');
+const { userInstances, retreatInstances } = require('./packages/retreatData');
+const Retreat = require('./models/Retreat');
 
 
 if(process.env.NODE_ENV === 'development'){
@@ -56,7 +57,7 @@ const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL)
     //place insertMany() here
-    //User.insertMany(userInstances);
+    Retreat.insertMany(retreatInstances);
     app.listen(port, () => {
         console.log(`Server is listening on port ${port}...`)
     })
