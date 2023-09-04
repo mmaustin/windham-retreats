@@ -4,11 +4,6 @@ import Register from './pages/Register';
 import CheckOut from './pages/CheckOut';
 import { useSelector } from 'react-redux';
 
-// import reactLogo from './assets/react.svg';
-// import yogaWomen from './assets/yoga-women.jpg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
 
 function App() {
   //const [count, setCount] = useState(0);
@@ -27,16 +22,18 @@ function App() {
   const isLoggedIn = useSelector(state => state.loggedIn);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/register' element={<Register />} />
-        <Route path='/checkout' element={isLoggedIn ? < CheckOut /> : <Navigate to="/register"/>} />
-      </Routes>
-    </BrowserRouter>
+    <div className='app'>   
+      <BrowserRouter>
+        <Routes>
+          <Route path='/register' element={<Register />} />
+          <Route path='/checkout' element={isLoggedIn ? < CheckOut /> : <Navigate to="/register"/>} />
+        </Routes>
+      </BrowserRouter>
+    </div>
     // <figure >
     //   <img src="./src/assets/yoga-women.jpg" alt="yoga women" />
     // </figure>
   )
 }
 
-export default App
+export default App;
