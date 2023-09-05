@@ -12,7 +12,8 @@ const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/userRoutes');
 //const User = require('./models/User');
 const { userInstances, retreatInstances } = require('./packages/retreatData');
-//const Retreat = require('./models/Retreat');
+const Retreat = require('./models/Retreat');
+const retreatRoutes = require('./routes/retreatRoutes')
 
 
 if(process.env.NODE_ENV === 'development'){
@@ -26,6 +27,7 @@ app.use(express.json());
 app.use('/api/v1/messages', authenticateUser , messagesRoutes);
 app.use('/api/v1/users', authenticateUser , userRoutes);
 app.use('/api/v1/auth', authRoutes);
+app.use('/api/v1/retreats', retreatRoutes);
 
 // app.use('/api/v1/vite', (req, res) => {
 //   res.status(200).json({data: {name: 'mccray'}});
@@ -57,7 +59,7 @@ const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL)
     //place insertMany() here
-    //Retreat.insertMany(retreatInstances);
+    Retreat.insertMany(retreatInstances);
     app.listen(port, () => {
         console.log(`Server is listening on port ${port}...`)
     })
