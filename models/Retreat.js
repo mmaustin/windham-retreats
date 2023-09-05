@@ -7,6 +7,10 @@ const RetreatSchema = mongoose.Schema({
   picturePath: String,
   unitAmount: Number,
   displayAmount: String,
+  count: {
+    type: Number,
+    default: 0,
+  }
   },
   {timestamps: true},
 );

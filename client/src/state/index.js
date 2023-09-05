@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  //loggedIn: false,
+  loggedIn: false,
   isCartOpen: false,
   cart: [],
   items: [],
