@@ -4,24 +4,25 @@ import {PersonOutline, ShoppingBagOutlined, MenuOutlined, SearchOutlined} from '
 import { Badge, Box, IconButton } from '@mui/material';
 import { shades} from '../../theme';
 import { setIsCartOpen } from '../../state';
-import customFetch from '../../utils/customFetch';
-import { useEffect } from 'react';
+// import customFetch from '../../utils/customFetch';
+// import { useEffect } from 'react';
+
 
 
 const Navbar = () => {
 
-  const fetchRetreats = async() => {
-    try {
-      const {data} = await customFetch.get('/retreats');
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchRetreats = async() => {
+  //   try {
+  //     const {data} = await customFetch.get('/retreats');
+  //     console.log(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(()=>{
-    fetchRetreats();
-  }, [])
+  // useEffect(()=>{
+  //   fetchRetreats();
+  // }, [])
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

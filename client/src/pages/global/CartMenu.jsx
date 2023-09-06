@@ -14,11 +14,15 @@ const FlexBox = styled(Box)`
 `
 
 const CartMenu = () => {
-
+  
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { cart, isCartOpen } = useSelector(state => state.auth);
-
+  const { cart, isCartOpen } = useSelector(state => state);
+  
+  const totalPrice = cart.reduce((total, item) => {
+    return total + item.count * item.unitAmount
+  }, 0);
+  
   return (
     <Box
       display={isCartOpen ? "block" : "none"}
@@ -55,7 +59,7 @@ const CartMenu = () => {
                 <FlexBox p='15px 0' >
                   <Box flex='1 1 40%'>
                     <img
-                     src={`../../assets/${item.picturePath}`}
+                     src={`../../src/assets/${item.picturePath}`}
                      alt={item?.name}
                      height='164px'
                      width='123px'
@@ -102,8 +106,8 @@ const CartMenu = () => {
 
           <Box m='20px 0'>
               <FlexBox m='20px 0'>
-                <Typography fontWeight='bold'></Typography>
-                <Typography fontWeight='bold'></Typography>
+                <Typography fontWeight='bold'>SUBTOTAL</Typography>
+                <Typography fontWeight='bold'>${totalPrice}</Typography>
               </FlexBox>
               <Button
                 sx={{

@@ -5,7 +5,8 @@ import ItemDetails from "./pages/itemDetails/ItemDetails";
 import Checkout from "./pages/checkout/Checkout";
 import Confirmation from "./pages/checkout/Confirmation";
 import Navbar from "./pages/global/Navbar";
-
+import CartMenu from "./pages/global/CartMenu";
+//import pic from './'
 
 
 const ScrollToTop = () => {
@@ -30,6 +31,7 @@ const App = () => {
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/checkout/success' element={<Confirmation />} />
         </Routes>
+        <CartMenu />
       </BrowserRouter>
     </div>
   )
