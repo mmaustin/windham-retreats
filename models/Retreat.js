@@ -9,7 +9,7 @@ const RetreatSchema = mongoose.Schema({
   displayAmount: String,
   count: {
     type: Number,
-    default: 0,
+    default: 1,
   }
   },
   {timestamps: true},
