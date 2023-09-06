@@ -7,6 +7,7 @@ import Confirmation from "./pages/checkout/Confirmation";
 import Navbar from "./pages/global/Navbar";
 
 
+
 const ScrollToTop = () => {
   const {pathname} = useLocation();
 
