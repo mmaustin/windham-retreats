@@ -12,7 +12,7 @@ const cookieParser = require('cookie-parser');
 const userRoutes = require('./routes/userRoutes');
 //const User = require('./models/User');
 const { userInstances, retreatInstances } = require('./packages/retreatData');
-const Retreat = require('./models/Retreat');
+//const Retreat = require('./models/Retreat');
 const retreatRoutes = require('./routes/retreatRoutes')
 
 
@@ -59,7 +59,7 @@ const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL)
     //place insertMany() here
-    Retreat.insertMany(retreatInstances);
+    //Retreat.insertMany(retreatInstances);
     app.listen(port, () => {
         console.log(`Server is listening on port ${port}...`)
     })
