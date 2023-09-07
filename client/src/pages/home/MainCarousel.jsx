@@ -81,9 +81,9 @@ const MainCarousel = () => {
               maxWidth={isNonMobile ? undefined : '240px'}
             >
               <Typography color={shades.secondary[200]}>YOGA RETREATS</Typography>
-              <Typography variant='h1'>KNOW THYSELF</Typography>
+              <Typography variant='h2'>rediscover yourself</Typography>
             </Box>              
-            <p className="legend">Legend 1</p>
+            <p className='legend'>Retreat One</p>
         </div>
         <div>
             <img src={carouselPictures.retreat2} alt='two'
@@ -108,9 +108,9 @@ const MainCarousel = () => {
               maxWidth={isNonMobile ? undefined : '240px'}
             >
               <Typography color={shades.secondary[200]}>YOGA RETREATS</Typography>
-              <Typography variant='h1'>KNOW THYSELF</Typography>
+              <Typography variant='h2'>rediscover yourself</Typography>
             </Box>              
-            <p className="legend">Legend 2</p>
+            <p className='legend'>Retreat 2</p>
         </div>
         <div>
             <img src={carouselPictures.retreat3} alt='two'
@@ -135,9 +135,9 @@ const MainCarousel = () => {
               maxWidth={isNonMobile ? undefined : '240px'}
             >
               <Typography color={shades.secondary[200]}>YOGA RETREATS</Typography>
-              <Typography variant='h1'>KNOW THYSELF</Typography>
+              <Typography variant='h2'>rediscover yourself</Typography>
             </Box>              
-            <p className="legend">Legend 3</p>
+            <p className='legend'>Retreat Three</p>
         </div>
       </Carousel>
     </div>

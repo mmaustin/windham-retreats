@@ -6,12 +6,9 @@ const Home = () => {
   return (
     <>
       <Navbar />
-    <div className='home' style={{marginTop: '60px'}}>
-      <div>home</div>
-    <>
+      <div className='home' style={{marginTop: '60px'}}>
       <MainCarousel />
-    </>
-    </div>
+      </div>
     </>
   )
 }

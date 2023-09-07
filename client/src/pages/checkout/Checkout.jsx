@@ -1,8 +1,14 @@
+import Navbar from "../global/Navbar"
 
 
 const Checkout = () => {
   return (
-    <div>Checkout</div>
+    <>
+      <Navbar />
+      <div className='home' style={{marginTop: '60px'}}>
+        Checkout
+      </div>
+    </>
   )
 }
 export default Checkout

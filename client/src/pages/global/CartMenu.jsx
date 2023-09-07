@@ -17,7 +17,8 @@ const CartMenu = () => {
   
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { cart, isCartOpen } = useSelector(state => state);
+  const cart = useSelector(state => state.cart);
+  const isCartOpen  = useSelector(state => state.isCartOpen);
   
   const totalPrice = cart.reduce((total, item) => {
     return total + item.count * item.unitAmount
