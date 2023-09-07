@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-    <div className='home'>
+    <div className='home' style={{marginTop: '60px'}}>
       <div>home</div>
     <>
       <MainCarousel />
