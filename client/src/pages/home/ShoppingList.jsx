@@ -13,16 +13,6 @@ const ShoppingList = () => {
   const items = useSelector(state => state.items);
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-
-  //console.log(items);
-  // const itemsDisplay = items.map((item, i) => (
-  //   <div key={i}>
-  //     <Item item={item} />
-  //   </div>
-  //))
-
-  //const [count, setCount] = useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }
@@ -38,15 +28,46 @@ const ShoppingList = () => {
       console.log(error);
     }
   }
+
+  //Once I'm set on how to properly handle prices, 2:03 in the video shows how I can filter by price
   
   useEffect(() => {
     getRetreats();
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div>
-      
-    </div>
+    <Box width="80%" margin="80px auto">
+      <Typography variant="h3" textAlign='center'>
+        Our Featured Products
+      </Typography>
+      <Tabs
+        textColor='primary'
+        indicatorColor='primary'
+        value={value}
+        centered
+        TabIndicatorProps={{sx: {display: isNonMobile ? 'block' : 'none'}}}
+        sx={{
+          m: '25px',
+          "& .MuiTabs-flexContainer": {
+            fleexWrap: 'wrap'
+          }
+        }}
+      >
+        <Tab label="All" value="all" />
+      </Tabs>
+      <Box
+        margin="0 auto"
+        display="grid"
+        gridTemplateColumns="repeat(auto-fill, 300px)"
+        justifyContent="space-around"
+        rowGap="20px"
+        columnGap="1.33%"
+      >
+        {value === "all" && items.map(item => (
+          <Item item={item} key={`${item.name}-${item._id}`} />
+        ))}
+      </Box>
+    </Box>
   )
 }
 export default ShoppingList;

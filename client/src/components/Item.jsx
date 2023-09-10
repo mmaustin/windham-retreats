@@ -17,7 +17,7 @@ console.log(item);
     palette: {neutral },
   } = useTheme();
 
-  const { unitAmount, name, picturePath } = item;
+  const { displayAmount, name, picturePath } = item;
 
   return (
     <Box width={width} >
@@ -75,7 +75,7 @@ console.log(item);
 
       <Box mt='3px'>
         <Typography>{name}</Typography>
-        <Typography fontWeight='bold'>${unitAmount}</Typography>
+        <Typography fontWeight='bold'>{displayAmount}</Typography>
       </Box>
     </Box>
   )
