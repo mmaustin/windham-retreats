@@ -7,8 +7,8 @@ import { addToCart } from "../state";
 import { useNavigate } from "react-router-dom";
 
 
-const Item = ({item, width}) => {
-
+const Item = ({item, width}) => { 
+console.log(item);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
@@ -30,7 +30,7 @@ const Item = ({item, width}) => {
           alt={item.name}
           width='300px'
           height='400px'
-          src={`../src/assets${picturePath}`}
+          src={`../src/assets/${picturePath}`}
           onClick={()=> navigate(`/item/${item._id}`)}
           style={{cursor: 'pointer'}}
         />
