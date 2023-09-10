@@ -15,7 +15,7 @@ export const authSlice = createSlice({
       state.loggedIn = action.payload.loggedIn;
     },
     setItems: (state, action) => {
-      state.items = action.payload;
+      state.items = action.payload.items;
     },
     addToCart: (state, action) => {
       state.cart = [...state.cart, action.payload.item];
