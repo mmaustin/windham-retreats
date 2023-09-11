@@ -4,8 +4,10 @@ import Home from './pages/home/Home';
 import ItemDetails from "./pages/itemDetails/ItemDetails";
 import Checkout from "./pages/checkout/Checkout";
 import Confirmation from "./pages/checkout/Confirmation";
-// import Navbar from "./pages/global/Navbar";
+import Navbar from "./pages/global/Navbar";
 import CartMenu from "./pages/global/CartMenu";
+import Footer from "./pages/global/Footer";
+
 //import MainCarousel from "./pages/home/MainCarousel";
 
 //import pic from './'
@@ -25,7 +27,7 @@ const App = () => {
   return (
     <div className="app">
       <BrowserRouter>
-        {/* <Navbar /> */}
+        <Navbar />
         <ScrollToTop />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -34,6 +36,7 @@ const App = () => {
           <Route path='/checkout/success' element={<Confirmation />} />
         </Routes>
         <CartMenu />
+        <Footer />
       </BrowserRouter>
     </div>
   )

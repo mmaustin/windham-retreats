@@ -44,11 +44,11 @@ export const theme = createTheme({
     secondary: {
       main: shades.secondary[500]
     },
-    neutral: {
+    info: {
       dark: shades.neutral[700],
       main: shades.neutral[500],
       light: shades.neutral[100]
-    }
+    },
   },
   typography: {
     fontFamily: ["Fauna One", "sans-serif"].join(','),

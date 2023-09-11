@@ -13,9 +13,9 @@ const ShoppingList = () => {
   const items = useSelector(state => state.items);
   const isNonMobile = useMediaQuery("(min-width:600px)");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  }
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  //}
   
   const getRetreats = async() => {
     try { 
