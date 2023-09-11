@@ -19,7 +19,7 @@ const Footer = () => {
       >
         <Box width='clamp(20%, 30%, 40%)'>
           <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
-            Windom Yoga
+            Windham Yoga
           </Typography>
           <div>
             Situation in the lovely Catskills Mountains, this hill-top lodge is the perfect getaway for peaceful connection with nature.  Hiking trails and waterfalls abound in the surrounding region, providing plenty of opportunities to relax and reboot.

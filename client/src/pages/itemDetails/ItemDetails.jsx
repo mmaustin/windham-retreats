@@ -3,7 +3,7 @@ import { IconButton, Box, Typography, Button, Tabs, Tab } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { addToCart } from "../../state";
+import { addToCart, removeFromCart } from "../../state";
 import { shades } from "../../theme";
 import Item from '../../components/Item';
 
@@ -38,7 +38,7 @@ const ItemDetails = () => {
         </Box>
 
         <Box flex='1 1 50%' mb='40px'>
-          <Box display='flex' justifyContent='center'>
+          <Box display='flex' justifyContent='flex-start'>
             <Typography mb='40px' variant="h3">{retreat?.name}</Typography>
           </Box>
 
@@ -46,8 +46,42 @@ const ItemDetails = () => {
             <Typography variant="h4">{retreat?.description}</Typography>
             <Typography sx={{mt: '20px'}} variant="h4">{retreat?.displayAmount}</Typography>
           </Box>
-        </Box>
 
+          <Box display='flex' alignItems='center' minHeight='50px'>
+            <Box
+              display='flex'
+              alignItems='center'
+              border={`1.5px solid ${shades.neutral[300]}`}
+              mr='20px'
+              p='2px 5px'
+            >
+              <IconButton
+                onClick={()=> setCount(Math.max(count -1, 1))}
+              >
+                <Remove />
+              </IconButton>
+              <Typography sx={{p: '0 px'}}>{count}</Typography>
+              <IconButton
+                onClick={()=> setCount(count + 1)}
+              >
+                <Add />
+              </IconButton>              
+            </Box>
+            <Button
+              sx={{
+                backgroundColor: '#222222',
+                color: 'white',
+                borderRadius: 0,
+                minWidth: '150px',
+                padding: '10px 40px'
+              }}
+              onClick={()=> dispatch(addToCart({item: {...retreat, count}}))}
+            >
+              ADD TO CART
+            </Button>
+
+          </Box>
+        </Box>
       </Box>
     </Box>
   )
