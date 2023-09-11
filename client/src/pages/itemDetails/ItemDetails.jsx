@@ -12,13 +12,44 @@ const ItemDetails = () => {
   const dispatch = useDispatch();
   const {itemId} = useParams();
   const [count, setCount] = useState(1);
-  const [item, setItem] = useState(null);
+  const [retreat, setRetreat] = useState(null);
   //const [items, setItems] = useState([]);
-  const items = useSelector(state => state.items);
-  const retreat = items.find(item => item._id === itemId);
-console.log(retreat);
+  const retreats = useSelector(state => state.items);
+  const pageRetreat = retreats.find(singleRetreat => singleRetreat._id === itemId);
+
+  useEffect(() => {
+    setRetreat(pageRetreat);
+  }, [pageRetreat]);
+
+  console.log(retreat);
+
   return (
-    <div>ItemDetails</div>
+    <Box width='80%' m='80px auto 0px auto'>
+      <Box display='flex' flexWrap='wrap' columnGap='40px'>
+        
+        <Box flex='1 1 40%' mb='40px'>
+          <img
+            alt={retreat?.name}
+            width='100%'
+            height='100%'
+            src={`../src/assets/${retreat?.picturePath}`}
+            style={{objectFit: 'contain'}}
+          />
+        </Box>
+
+        <Box flex='1 1 50%' mb='40px'>
+          <Box display='flex' justifyContent='center'>
+            <Typography mb='40px' variant="h3">{retreat?.name}</Typography>
+          </Box>
+
+          <Box display='50px 0 25px 0'>
+            <Typography variant="h4">{retreat?.description}</Typography>
+            <Typography sx={{mt: '20px'}} variant="h4">{retreat?.displayAmount}</Typography>
+          </Box>
+        </Box>
+
+      </Box>
+    </Box>
   )
 }
 export default ItemDetails
