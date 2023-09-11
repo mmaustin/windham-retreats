@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Item = ({item, width}) => { 
-console.log(item);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
@@ -17,7 +17,8 @@ console.log(item);
     palette: {neutral },
   } = useTheme();
 
-  const { displayAmount, name, picturePath } = item;
+  const { displayAmount, name, picturePath, _id } = item;
+  //console.log(typeof _id);
 
   return (
     <Box width={width} >

@@ -22,13 +22,16 @@ const Footer = () => {
             Windom Yoga
           </Typography>
           <div>
-            Let us help you rediscover yourself and unlock your true potential.
+            Situation in the lovely Catskills Mountains, this hill-top lodge is the perfect getaway for peaceful connection with nature.  Hiking trails and waterfalls abound in the surrounding region, providing plenty of opportunities to relax and reboot.
           </div>
         </Box>
 
         <Box width='clamp(20%, 30%, 40%)'>
           <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
             Curator: Erica Ahse, PhD
+          </Typography>
+          <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
+            Location: Windham, New York
           </Typography>
         </Box>
 
