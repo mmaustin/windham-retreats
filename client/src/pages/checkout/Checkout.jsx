@@ -9,14 +9,15 @@ import getFormValues from '../../utils/getFormValues';
 
 const Checkout = () => {
 
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector(state => state.cart);
   const isFirst = activeStep === 0;
   const isSecond = activeStep === 1;
 
-  const isNonMobile = useMediaQuery("(min-width:600px)");
+  // const isNonMobile = useMediaQuery("(min-width:600px)");
+  // console.log(activeStep);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,6 +33,7 @@ const Checkout = () => {
       //if async data fetch fells, the error below is an axios error
       const {data} = await customFetch.post('/auth/register', registrationData);
       console.log(data);
+      setActiveStep(activeStep + 1);
     } catch (error) {
       //an axios error whose message can be overwritten
       if(error){
@@ -131,13 +133,23 @@ const Checkout = () => {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                   >
-                    Submit Information
+                    Submit & Proceed To Payment
                   </Button>
                 </Box>
               </Box>              
             </Box>
           </Box>       
         }
+        {isSecond && (
+          <Box>
+            <Typography variant='h4'>
+              Click Below To Proceed To The Order Page
+            </Typography>
+            <Button type='button'>
+              Proceed To Order
+            </Button>
+          </Box>
+        )}
       </Box>
     </Box>
   )
