@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {Box, Button, Stepper, Step, StepLabel} from '@mui/material';
+import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, useMediaQuery, TextField} from '@mui/material';
 import { useState } from 'react';
 import {shades} from '../../theme';
 import customFetch from '../../utils/customFetch';
@@ -13,7 +13,10 @@ const Checkout = () => {
 
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector(state => state.cart);
-  const isFirstStep = activeStep === 0;
+  const isFirst = activeStep === 0;
+  const isSecond = activeStep === 1;
+
+  const isNonMobile = useMediaQuery("(min-width:600px)");
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -32,28 +35,111 @@ const Checkout = () => {
     } catch (error) {
       //an axios error whose message can be overwritten
       if(error){
-        error.message = "coocoo for cocoa puffs!"
+        //error.message = "coocoo for cocoa puffs!"
         console.log(error.message);
       }
     }
   }
 
   return (
-    <div className='home' style={{marginTop: '60px'}}>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="name"></label>
-        <input type="text" id="name" name="name" placeholder='First Name'/>
-        <label htmlFor="lastName"></label>
-        <input type="text" id="lastName" name="lastName" placeholder='Last Name'/>
-        <label htmlFor="phoneNumber"></label>
-        <input type="number" id="phoneNumber" name="phoneNumber" placeholder='Phone Number'/>
-        <label htmlFor="zipCode"></label>
-        <input type="number" id="zipCode" name="zipCode" placeholder='Zip Code'/>
-        <label htmlFor="email"></label>
-        <input type="email" id="email" name="email" placeholder='Email Address'/>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <Box width='80%' m='100px auto'>
+      <Stepper activeStep={activeStep} sx={{m: '20px o'}}>
+        <Step>
+          <StepLabel>Customer Information</StepLabel>
+        </Step>
+        <Step>
+          <StepLabel>Payment</StepLabel>
+        </Step>
+      </Stepper>
+      <Box>
+        {isFirst &&
+          <Box m='30px auto'>
+            <Box>
+              <Typography sx={{mb: '15px'}} fontSize='18px'>
+                Customer Information
+              </Typography>
+
+              <Box
+                sx={{
+                  marginTop: 8,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        // autoComplete="given-name"
+                        name="name"
+                        required
+                        fullWidth
+                        id="name"
+                        label="First Name"
+                        autoFocus
+                        type='text'
+                      />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField
+                        required
+                        fullWidth
+                        id="lastName"
+                        label="Last Name"
+                        name="lastName"
+                        type='text'
+                        // autoComplete="family-name"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email Address"
+                        name="email"
+                        autoComplete="email"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        required
+                        fullWidth
+                        name="phoneNumber"
+                        label="Phone Number"
+                        type="text"
+                        id="phoneNumber"
+                        // autoComplete="new-password"
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        required
+                        fullWidth
+                        name="zipCode"
+                        label="Zip Code"
+                        type="text"
+                        id="zipCode"
+                        // autoComplete="new-password"
+                      />
+                    </Grid>
+                  </Grid>
+                  <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    sx={{ mt: 3, mb: 2 }}
+                  >
+                    Submit Information
+                  </Button>
+                </Box>
+              </Box>              
+            </Box>
+          </Box>       
+        }
+      </Box>
+    </Box>
   )
 }
 export default Checkout
