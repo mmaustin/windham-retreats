@@ -48,6 +48,9 @@ const validateMessageId = withValidationErrors([
 
 const validateRegisterInput = withValidationErrors([
   body('name').notEmpty().withMessage('name is required'),
+  body('lastName').notEmpty().withMessage('last name is required'),
+  body('phoneNumber').notEmpty().withMessage('phone number is required'),
+  body('zipCode').notEmpty().withMessage('zip code is required'),
   body('email').notEmpty().withMessage('email is required').isEmail().withMessage('invalid email format')
   .custom(async (email) => {
     const user = await User.findOne({email});
@@ -55,8 +58,8 @@ const validateRegisterInput = withValidationErrors([
       throw new BadRequestError('email already in use')
     }
   }),
-  body('password').notEmpty().withMessage('password is required')
-  .isLength({min: 8}).withMessage('password must be at least 8 characters long'),
+  // body('password').notEmpty().withMessage('password is required')
+  // .isLength({min: 8}).withMessage('password must be at least 8 characters long'),
 ]);
 
 const validateLoginInput = withValidationErrors([

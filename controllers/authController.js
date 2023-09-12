@@ -7,7 +7,7 @@ const { createJWT } = require("../utils/tokenUtils");
 
 const register = async (req, res) => {
 
-  req.body.password = await hashPassword(req.body.password);
+  //req.body.password = await hashPassword(req.body.password);
 
   const user = await User.create(req.body);
   res.status(StatusCodes.CREATED).json({msg: 'user created'});
