@@ -13,7 +13,8 @@ const userRoutes = require('./routes/userRoutes');
 //const User = require('./models/User');
 const { userInstances, retreatInstances } = require('./packages/retreatData');
 //const Retreat = require('./models/Retreat');
-const retreatRoutes = require('./routes/retreatRoutes')
+const retreatRoutes = require('./routes/retreatRoutes');
+const stripeConnect = require('./routes/stripeRoute');
 
 
 if(process.env.NODE_ENV === 'development'){
@@ -28,6 +29,7 @@ app.use('/api/v1/messages', authenticateUser , messagesRoutes);
 app.use('/api/v1/users', authenticateUser , userRoutes);
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/retreats', retreatRoutes);
+app.use(stripeConnect);
 
 // app.use('/api/v1/vite', (req, res) => {
 //   res.status(200).json({data: {name: 'mccray'}});
