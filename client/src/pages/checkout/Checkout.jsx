@@ -4,20 +4,24 @@ import { useState } from 'react';
 import {shades} from '../../theme';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
-import {loadStripe} from '@stripe/stripe-js';
+//import {loadStripe} from '@stripe/stripe-js';
+import { getCustomer } from '../../state';
 
-const stripePromise = loadStripe(
-  "pk_test_51NqE0zIgXSCiFnECAqjKJlTqP1la3sKoiAr08waDPEcMDR6gN9QAIlRkcR8BtpVCwpYoNPdqdGcmwXrqXvJxel3D00Kc9tDQPW"
-)
+// const stripePromise = loadStripe(
+//   "pk_test_51NqE0zIgXSCiFnECAqjKJlTqP1la3sKoiAr08waDPEcMDR6gN9QAIlRkcR8BtpVCwpYoNPdqdGcmwXrqXvJxel3D00Kc9tDQPW"
+// )
 
 const Checkout = () => {
 
-  //const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector(state => state.cart);
+  console.log(cart);
+  const activeCustomer = useSelector(state => state.customer);
   const isFirst = activeStep === 0;
   const isSecond = activeStep === 1;
+  console.log(activeCustomer);
 
   // const isNonMobile = useMediaQuery("(min-width:600px)");
   // console.log(activeStep);
@@ -35,7 +39,7 @@ const Checkout = () => {
     try {
       //if async data fetch fells, the error below is an axios error
       const {data} = await customFetch.post('/auth/register', registrationData);
-      console.log(data);
+      dispatch(getCustomer({customer: data.user}))
       setActiveStep(activeStep + 1);
     } catch (error) {
       //an axios error whose message can be overwritten
