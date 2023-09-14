@@ -4,8 +4,11 @@ import { useState } from 'react';
 import {shades} from '../../theme';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
+import {loadStripe} from '@stripe/stripe-js';
 
-
+const stripePromise = loadStripe(
+  "pk_test_51NqE0zIgXSCiFnECAqjKJlTqP1la3sKoiAr08waDPEcMDR6gN9QAIlRkcR8BtpVCwpYoNPdqdGcmwXrqXvJxel3D00Kc9tDQPW"
+)
 
 const Checkout = () => {
 
