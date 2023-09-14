@@ -50,7 +50,7 @@ const Checkout = () => {
           <StepLabel>Customer Information</StepLabel>
         </Step>
         <Step>
-          <StepLabel>Payment</StepLabel>
+          <StepLabel>Proceed To Payment</StepLabel>
         </Step>
       </Stepper>
       <Box>
@@ -141,13 +141,28 @@ const Checkout = () => {
           </Box>       
         }
         {isSecond && (
-          <Box>
-            <Typography variant='h4'>
-              Click Below To Proceed To The Order Page
-            </Typography>
-            <Button type='button'>
-              Proceed To Order
-            </Button>
+          <Box m='30px auto'>
+            <Box>
+              <Typography sx={{mb: '15px'}} fontSize='18px'>
+                Customer Information
+              </Typography>
+
+              <Box
+                sx={{
+                  marginTop: 8,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <Typography variant='h2'>
+                  Click Below To Proceed To The Order Page
+                </Typography>
+                <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }}>
+                  Proceed To Order
+                </Button>
+              </Box>
+            </Box>
           </Box>
         )}
       </Box>
