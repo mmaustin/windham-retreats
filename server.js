@@ -34,10 +34,36 @@ app.use(stripeConnect);
 // app.use('/api/v1/config', (req, res) => {
 //   res.status(200).json({data: {name: 'mccray'}});
 // })
+
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: "2023-08-16",
+});
+
 app.get("/api/v1/config", (req, res) => {
   res.send({
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
   });
+});
+
+app.post("/api/v1/create-payment-intent", async (req, res) => {
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      currency: "EUR",
+      amount: 1999,
+      automatic_payment_methods: { enabled: true },
+    });
+
+    // Send publishable key and PaymentIntent details to client
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch (e) {
+    return res.status(400).send({
+      error: {
+        message: e.message,
+      },
+    });
+  }
 });
 // app.use('/api/v1/vigor', (req, res) => {
 //   res.status(200).json({data: {name: 'martin'}});
