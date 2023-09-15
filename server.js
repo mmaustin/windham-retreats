@@ -31,9 +31,14 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/retreats', retreatRoutes);
 app.use(stripeConnect);
 
-// app.use('/api/v1/vite', (req, res) => {
+// app.use('/api/v1/config', (req, res) => {
 //   res.status(200).json({data: {name: 'mccray'}});
 // })
+app.get("/api/v1/config", (req, res) => {
+  res.send({
+    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+  });
+});
 // app.use('/api/v1/vigor', (req, res) => {
 //   res.status(200).json({data: {name: 'martin'}});
 // })

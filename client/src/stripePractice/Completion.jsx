@@ -1,8 +1,8 @@
 
 
-const Completion = () => {
+const Completion = (props) => {
   return (
-    <div>Completion</div>
+    <h1>Thank you!</h1>
   )
 }
 export default Completion
