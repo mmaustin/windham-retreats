@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 import {BrowserRouter, Routes, Route, useLocation} from 'react-router-dom';
-import Payment from './stripePractice/Payment';
-import Completion from './stripePractice/Completion';
 import Home from './pages/home/Home';
 import ItemDetails from "./pages/itemDetails/ItemDetails";
 import Checkout from "./pages/checkout/Checkout";
@@ -9,6 +7,8 @@ import Confirmation from "./pages/checkout/Confirmation";
 import Navbar from "./pages/global/Navbar";
 import CartMenu from "./pages/global/CartMenu";
 import Footer from "./pages/global/Footer";
+import Payment from './stripeFiles/Payment';
+import Completion from './stripeFiles/Completion';
 
 //import MainCarousel from "./pages/home/MainCarousel";
 

@@ -4,16 +4,19 @@ import { useState } from 'react';
 import {shades} from '../../theme';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
-import {loadStripe} from '@stripe/stripe-js';
+//import {loadStripe} from '@stripe/stripe-js';
 import { getCustomer } from '../../state';
+import { useNavigate } from 'react-router-dom';
 
-const stripePromise = loadStripe(
-  "pk_test_51NqE0zIgXSCiFnECAqjKJlTqP1la3sKoiAr08waDPEcMDR6gN9QAIlRkcR8BtpVCwpYoNPdqdGcmwXrqXvJxel3D00Kc9tDQPW"
-)
+
+// const stripePromise = loadStripe(
+//   "pk_test_51NqE0zIgXSCiFnECAqjKJlTqP1la3sKoiAr08waDPEcMDR6gN9QAIlRkcR8BtpVCwpYoNPdqdGcmwXrqXvJxel3D00Kc9tDQPW"
+// )
 
 const Checkout = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector(state => state.cart);
@@ -165,18 +168,13 @@ const Checkout = () => {
                 <Typography variant='h2'>
                   Click Below To Proceed To The Order Page
                 </Typography>
-                <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }}>
+                <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/payment')}>
                   Proceed To Order
                 </Button>
               </Box>
             </Box>
           </Box>
         )}
-        <form action="/create-checkout-session" method="POST">
-          <button type="submit">
-            Checkout
-          </button>
-        </form>
       </Box>
     </Box>
   )
