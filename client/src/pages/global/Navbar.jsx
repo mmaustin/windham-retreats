@@ -27,9 +27,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
-  const isCartOpen = useSelector(state => state.isCartOpen);
+  //const isCartOpen = useSelector(state => state.isCartOpen);
   const cart = useSelector(state => state.cart);
-  console.log(cart, isCartOpen);
 
   return (
     <Box
