@@ -2,7 +2,9 @@
 
 const Completion = () => {
   return (
-    <h1>Thank you!</h1>
+    <div style={{marginTop: '60px'}}>
+      Your Payment Was Successful!
+    </div>
   )
 }
 export default Completion
