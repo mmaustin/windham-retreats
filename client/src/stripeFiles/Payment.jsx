@@ -41,4 +41,4 @@ const Payment = () => {
     </div>
   )
 }
-export default Payment
+export default Payment;

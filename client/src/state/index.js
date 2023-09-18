@@ -24,6 +24,9 @@ export const authSlice = createSlice({
     addToCart: (state, action) => {
       state.cart = [...state.cart, action.payload.item];
     },
+    emptyCart: (state) => {
+      state.cart = [];
+    },
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter(item => item._id !== action.payload.id);
     },
@@ -49,5 +52,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setLogin, setItems, addToCart, getCustomer, removeFromCart, increaseCount, decreaseCount, setIsCartOpen } = authSlice.actions;
+export const { setLogin, setItems, addToCart, getCustomer, removeFromCart, increaseCount, decreaseCount, setIsCartOpen, emptyCart } = authSlice.actions;
 export default authSlice.reducer;
