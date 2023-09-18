@@ -16,10 +16,13 @@ const Payment = () => {
     })
   }, []);
 
+  //const data = {amount: 25000, currency: 'usd'};
+
   useEffect(() => {
     fetch("/api/v1/create-payment-intent", {
       method: "POST",
-      body: JSON.stringify({}),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({amount: 25000, currency: 'usd'}),
     }).then(async (result) => {
       let { clientSecret } = await result.json();
       setClientSecret(clientSecret);
@@ -31,7 +34,7 @@ const Payment = () => {
     <>
       <h1>React Stripe and the Payment Element</h1>
       {clientSecret && stripePromise && (
-        <Elements stripe={stripePromise} options={{ clientSecret }}>
+        <Elements stripe={stripePromise} options={{ clientSecret}}>
           <CheckoutForm />
         </Elements>
       )}

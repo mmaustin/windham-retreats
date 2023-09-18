@@ -1,49 +1,52 @@
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import {BrowserRouter, Routes, Route, useLocation} from 'react-router-dom';
 import Payment from './stripePractice/Payment';
 import Completion from './stripePractice/Completion';
-// import Home from './pages/home/Home';
-// import ItemDetails from "./pages/itemDetails/ItemDetails";
-// import Checkout from "./pages/checkout/Checkout";
-// import Confirmation from "./pages/checkout/Confirmation";
-// import Navbar from "./pages/global/Navbar";
-// import CartMenu from "./pages/global/CartMenu";
-// import Footer from "./pages/global/Footer";
+import Home from './pages/home/Home';
+import ItemDetails from "./pages/itemDetails/ItemDetails";
+import Checkout from "./pages/checkout/Checkout";
+import Confirmation from "./pages/checkout/Confirmation";
+import Navbar from "./pages/global/Navbar";
+import CartMenu from "./pages/global/CartMenu";
+import Footer from "./pages/global/Footer";
 
-// //import MainCarousel from "./pages/home/MainCarousel";
+//import MainCarousel from "./pages/home/MainCarousel";
 
-// //import pic from './'
+//import pic from './'
 
 
-// const ScrollToTop = () => {
-//   const {pathname} = useLocation();
+const ScrollToTop = () => {
+  const {pathname} = useLocation();
 
-//   useEffect(() => {
-//     window.scrollTo(0,0);
-//   },[pathname])
+  useEffect(() => {
+    window.scrollTo(0,0);
+  },[pathname])
 
-//   return null;
-// }
+  return null;
+}
 
-// const App = () => {
-//   return (
-//     <div className="app">
-//       <BrowserRouter>
-//         <Navbar />
-//         <ScrollToTop />
-//         <Routes>
-//           <Route path='/' element={<Home />} />
-//           <Route path='/item/:itemId' element={<ItemDetails />} />
-//           <Route path='/checkout' element={<Checkout />} />
-//           <Route path='/checkout/success' element={<Confirmation />} />
-//         </Routes>
-//         <CartMenu />
-//         <Footer />
-//       </BrowserRouter>
-//     </div>
-//   )
-// }
-// export default App
+const App = () => {
+  return (
+    <div className="app">
+      <BrowserRouter>
+        <Navbar />
+        <ScrollToTop />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/item/:itemId' element={<ItemDetails />} />
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/checkout/success' element={<Confirmation />} />
+          <Route path='/payment' element={<Payment />} />
+          <Route path='/completion' element={<Completion />} />
+        </Routes>
+        <CartMenu />
+        <Footer />
+      </BrowserRouter>
+    </div>
+  )
+}
+export default App;
+
 //import { useState, useEffect } from 'react'
 // import { BrowserRouter, Navigate, Routes, Route } from 'react-router-dom'
 // import Register from './pages/Register';
@@ -52,35 +55,35 @@ import Completion from './stripePractice/Completion';
 
 
 
-function App() {
-  // const [count, setCount] = useState(0);
+// function App() {
+//   // const [count, setCount] = useState(0);
 
-  // const getObject = async() => {
-  //   const response = await axios.get("/api/v1/messages");
+//   // const getObject = async() => {
+//   //   const response = await axios.get("/api/v1/messages");
 
-  //   const { data } = await response.json();
-  //   console.log(response.data);
-  // }
+//   //   const { data } = await response.json();
+//   //   console.log(response.data);
+//   // }
 
-  // useEffect(() => {
-  //   getObject();
-  // }, []);
+//   // useEffect(() => {
+//   //   getObject();
+//   // }, []);
 
-  // const isLoggedIn = useSelector(state => state.loggedIn);
+//   // const isLoggedIn = useSelector(state => state.loggedIn);
 
-  return (
-    <div className='app'>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<Payment />} />
-          <Route path='/completion' element={<Completion />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  )
-}
+//   return (
+//     <div className='app'>
+//       <BrowserRouter>
+//         <Routes>
+//           <Route path='/' element={<Payment />} />
+//           <Route path='/completion' element={<Completion />} />
+//         </Routes>
+//       </BrowserRouter>
+//     </div>
+//   )
+// }
 
-export default App;
+// export default App;
 
 // <figure >
 //   <img src="./src/assets/yoga-women.jpg" alt="yoga women" />

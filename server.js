@@ -46,10 +46,12 @@ app.get("/api/v1/config", (req, res) => {
 });
 
 app.post("/api/v1/create-payment-intent", async (req, res) => {
+  let {currency, amount} = req.body;
+
   try {
     const paymentIntent = await stripe.paymentIntents.create({
-      currency: "EUR",
-      amount: 1999,
+      currency: currency,
+      amount: amount,
       automatic_payment_methods: { enabled: true },
     });
 
