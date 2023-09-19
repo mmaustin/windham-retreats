@@ -11,9 +11,11 @@ const Payment = () => {
   const [clientSecret, setClientSecret] = useState('');
   const cart = useSelector(state => state.cart);
 
-  const totalPrice = cart.reduce((total, item) => {
+  let totalPrice = cart.reduce((total, item) => {
     return total + item.count * item.unitAmount
   }, 0);
+
+  totalPrice = totalPrice/100 + '.00';
 
   useEffect(() => {
     fetch('/api/v1/config').then(async r => {

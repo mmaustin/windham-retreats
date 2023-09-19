@@ -22,10 +22,12 @@ const CartMenu = () => {
 
   
   
-  const totalPrice = cart.reduce((total, item) => {
+  let totalPrice = cart.reduce((total, item) => {
     return total + item.count * item.unitAmount
   }, 0);
   
+  totalPrice = totalPrice/100 + '.00';
+
   return (
     <Box
       display={isCartOpen ? "block" : "none"}
@@ -97,7 +99,7 @@ const CartMenu = () => {
                         </IconButton>                        
                       </Box>
                       <Typography fontWeight='bold'>
-                        ${item.displayAmount}
+                        {item.displayAmount}
                       </Typography>
                     </FlexBox>
                   </Box>
