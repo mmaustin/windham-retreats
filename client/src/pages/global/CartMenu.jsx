@@ -19,6 +19,8 @@ const CartMenu = () => {
   const dispatch = useDispatch();
   const cart = useSelector(state => state.cart);
   const isCartOpen  = useSelector(state => state.isCartOpen);
+
+  
   
   const totalPrice = cart.reduce((total, item) => {
     return total + item.count * item.unitAmount
