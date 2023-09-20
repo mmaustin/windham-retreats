@@ -1,4 +1,4 @@
-import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, useMediaQuery, TextField} from '@mui/material';
+import {Box, Grid, Button, TextField} from '@mui/material';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
 
@@ -30,7 +30,79 @@ function MessageForm() {
   }
 
   return (
-    <div>MessageForm</div>
+    <Box width='80%' m='40px auto'>
+      <Box>
+        <Box m='30px auto'>
+          <Box>
+            <Box
+              sx={{
+                marginTop: 8,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      // autoComplete="given-name"
+                      name="messenger"
+                      required
+                      fullWidth
+                      id="messenger"
+                      label="Name"
+                      autoFocus
+                      type='text'
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      id="email"
+                      label="Email Address"
+                      name="email"
+                      autoComplete="email"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      name="phoneNumber"
+                      label="Phone Number"
+                      type="text"
+                      id="phoneNumber"
+                      // autoComplete="new-password"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      required
+                      fullWidth
+                      name="content"
+                      label="Message"
+                      type="textarea"
+                      id="content"
+                      // autoComplete="new-password"
+                    />
+                  </Grid>
+                </Grid>
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Send
+                </Button>
+              </Box>
+            </Box>              
+          </Box>
+        </Box>
+      </Box>      
+    </Box>
   )
 }
 export default MessageForm;
