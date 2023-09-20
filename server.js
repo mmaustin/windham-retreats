@@ -25,7 +25,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 //replace authenticateUser middleware after proxy and axios testing!!!!!
-app.use('/api/v1/messages', authenticateUser , messagesRoutes);
+app.use('/api/v1/messages', messagesRoutes);
 app.use('/api/v1/users', authenticateUser , userRoutes);
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/retreats', retreatRoutes);

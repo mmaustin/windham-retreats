@@ -30,6 +30,8 @@ const withValidationErrors = (validationValues) => {
 const validateMessageInput = withValidationErrors([
   body('messenger').notEmpty().withMessage('messenger is required'),
   body('content').notEmpty().withMessage('content is required'),
+  body('phoneNumber').notEmpty().withMessage('phone number is required'),
+  body('email').notEmpty().withMessage('email is required').isEmail().withMessage('invalid email format')
 ]);
 
 const validateMessageId = withValidationErrors([

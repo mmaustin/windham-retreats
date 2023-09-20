@@ -3,7 +3,7 @@ const {StatusCodes} = require('http-status-codes');
 const { BadRequestError, NotFoundError} = require('../errors/index');
 
 const createMessage = async(req, res) => {
-  req.body.createdBy = req.user.userId;
+  //req.body.createdBy = req.user.userId;
   const message = await Message.create(req.body);
   res.status(201).json({message});
 };
