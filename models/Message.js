@@ -9,10 +9,12 @@ const MessageSchema = new mongoose.Schema({
     type: String,
     maxLength: 300
   },
-  createdBy: {
-    type: mongoose.Types.ObjectId,
-    ref: 'User',
+  email: {
+    type: String,
   },
+  phone: {
+    type: String,
+  }
   },
   {timestamps: true}
 );
