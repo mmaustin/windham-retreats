@@ -9,6 +9,7 @@ import CartMenu from "./pages/global/CartMenu";
 import Footer from "./pages/global/Footer";
 import Payment from './stripeFiles/Payment';
 import Completion from './stripeFiles/Completion';
+import MessageForm from "./pages/global/MessageForm";
 
 //import MainCarousel from "./pages/home/MainCarousel";
 
@@ -40,6 +41,7 @@ const App = () => {
           <Route path='/completion' element={<Completion />} />
         </Routes>
         <CartMenu />
+        <MessageForm />
         <Footer />
       </BrowserRouter>
     </div>
