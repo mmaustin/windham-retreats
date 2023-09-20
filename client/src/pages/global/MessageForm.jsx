@@ -10,6 +10,7 @@ function MessageForm() {
     e.preventDefault();
 
     const {isEmpty, instanceData} = getFormValues(e.currentTarget);
+    console.log(e.currentTarget);
      
     if(isEmpty) {
       console.log('please provide all values');
@@ -20,6 +21,12 @@ function MessageForm() {
       //if async data fetch fells, the error below is an axios error
       const {data} = await customFetch.post('/messages', instanceData);
       console.log(data.success);
+      // instanceData.messenger = '';
+      // instanceData.email = '';
+      // instanceData.phoneNumber = '';
+      // instanceData.content = '';
+      // console.log(instanceData);
+      
     } catch (error) {
       //an axios error whose message can be overwritten
       if(error){
@@ -42,7 +49,7 @@ function MessageForm() {
                 alignItems: 'center',
               }}
             >
-              <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
+              <Box component="form" onSubmit={onSubmit} sx={{ mt: 3, display: 'flex', flexDirection: 'column' }}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <TextField
@@ -56,7 +63,7 @@ function MessageForm() {
                       type='text'
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} sm={6}>
                     <TextField
                       required
                       fullWidth
@@ -66,7 +73,7 @@ function MessageForm() {
                       autoComplete="email"
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} >
                     <TextField
                       required
                       fullWidth
@@ -77,13 +84,15 @@ function MessageForm() {
                       // autoComplete="new-password"
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={12} >
                     <TextField
                       required
                       fullWidth
                       name="content"
                       label="Message"
-                      type="textarea"
+                      multiline
+                      rows={4}
+                      defaultValue="Default Value"
                       id="content"
                       // autoComplete="new-password"
                     />
