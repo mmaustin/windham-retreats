@@ -4,8 +4,8 @@ const getFormValues = (form) => {
   const values = [...formData.values()];
   const isEmpty = values.includes('');
 
-  const registrationData = Object.fromEntries(formData);
-  return {isEmpty, registrationData};
+  const instanceData = Object.fromEntries(formData);
+  return {isEmpty, instanceData};
 }
 
 export default getFormValues;

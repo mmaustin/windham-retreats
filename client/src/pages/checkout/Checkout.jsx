@@ -32,7 +32,7 @@ const Checkout = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const {isEmpty, registrationData} = getFormValues(e.currentTarget);
+    const {isEmpty, instanceData} = getFormValues(e.currentTarget);
      
     if(isEmpty) {
       console.log('please provide all values');
@@ -41,7 +41,7 @@ const Checkout = () => {
     
     try {
       //if async data fetch fells, the error below is an axios error
-      const {data} = await customFetch.post('/auth/register', registrationData);
+      const {data} = await customFetch.post('/auth/register', instanceData);
       dispatch(getCustomer({customer: data.user}))
       setActiveStep(activeStep + 1);
     } catch (error) {

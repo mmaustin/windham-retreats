@@ -5,7 +5,7 @@ const { BadRequestError, NotFoundError} = require('../errors/index');
 const createMessage = async(req, res) => {
   //req.body.createdBy = req.user.userId;
   const message = await Message.create(req.body);
-  res.status(201).json({message});
+  res.status(201).json({success: 'We Received Your Message!'});
 };
 
 const getMessages = async(req, res) => {
