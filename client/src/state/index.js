@@ -18,6 +18,9 @@ export const authSlice = createSlice({
     getCustomer: (state, action) => {
       state.customer = [action.payload.customer];
     },
+    removeCustomer: (state) => {
+      state.customer = [];
+    },
     setItems: (state, action) => {
       state.items = action.payload.items;
     },
@@ -52,5 +55,5 @@ export const authSlice = createSlice({
   },
 });
 
-export const { setLogin, setItems, addToCart, getCustomer, removeFromCart, increaseCount, decreaseCount, setIsCartOpen, emptyCart } = authSlice.actions;
+export const { setLogin, setItems, addToCart, getCustomer, removeFromCart, increaseCount, decreaseCount, setIsCartOpen, emptyCart, removeCustomer } = authSlice.actions;
 export default authSlice.reducer;

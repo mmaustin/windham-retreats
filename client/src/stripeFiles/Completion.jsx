@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { emptyCart } from "../state";
+import { emptyCart, removeCustomer } from "../state";
 import { useEffect } from "react";
 
 const Completion = () => {
@@ -8,6 +8,7 @@ const Completion = () => {
 
   useEffect(() => {
     dispatch(emptyCart());
+    dispatch(removeCustomer());
   }, [])
 
   return (

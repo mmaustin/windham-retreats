@@ -1,17 +1,12 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, useMediaQuery, TextField} from '@mui/material';
+import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, TextField} from '@mui/material';
 import { useState } from 'react';
-import {shades} from '../../theme';
+//import {shades} from '../../theme';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
-//import {loadStripe} from '@stripe/stripe-js';
 import { getCustomer } from '../../state';
 import { useNavigate } from 'react-router-dom';
 
-
-// const stripePromise = loadStripe(
-//   "pk_test_51NqE0zIgXSCiFnECAqjKJlTqP1la3sKoiAr08waDPEcMDR6gN9QAIlRkcR8BtpVCwpYoNPdqdGcmwXrqXvJxel3D00Kc9tDQPW"
-// )
 
 const Checkout = () => {
 
