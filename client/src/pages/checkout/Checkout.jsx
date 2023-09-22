@@ -143,7 +143,7 @@ const Checkout = () => {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                   >
-                    Submit & Proceed To Payment
+                    Submit & Confirmation
                   </Button>
                 </Box>
               </Box>              
@@ -154,7 +154,7 @@ const Checkout = () => {
           <Box m='30px auto'>
             <Box>
               <Typography sx={{mb: '15px'}} fontSize='18px'>
-                Customer Information
+                Customer Confirmation
               </Typography>
 
               <Box
@@ -166,7 +166,7 @@ const Checkout = () => {
                 }}
               >
                 <Typography variant='h2'>
-                  Click Below To Proceed To The Order Page
+                  Go To Order Page
                 </Typography>
                 <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/payment')}>
                   Proceed To Order

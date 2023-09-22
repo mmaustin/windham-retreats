@@ -48,7 +48,7 @@ const Payment = () => {
   }, []);
 
   return (
-    <div style={{marginTop: '60px'}}>
+    <div style={{marginTop: '60px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
       <h1>Add Payment Information</h1>
       <Box>
         {cart.map(item => (
@@ -76,19 +76,19 @@ const Payment = () => {
                   <Box 
                     display='flex'
                     alignItems='center'
-                    border={`1.5px solid ${shades.neutral[500]}`}
+                    // border={`1.5px solid ${shades.neutral[500]}`}
                   >
-                    <IconButton
+                    {/* <IconButton
                       // onClick={()=> dispatch(decreaseCount({id: item._id}))}
                     >
                       <Remove />
-                    </IconButton>
-                    <Typography>{item.count}</Typography>
-                    <IconButton
+                    </IconButton> */}
+                    <Typography variant='h4' fontWeight='bold'>{item.count}</Typography>
+                    {/* <IconButton
                       // onClick={()=> dispatch(increaseCount({id: item._id}))}
                     >
                       <Add />
-                    </IconButton>                        
+                    </IconButton>                         */}
                   </Box>
                   <Typography fontWeight='bold'>
                     {item.displayAmount}
@@ -100,7 +100,7 @@ const Payment = () => {
           </Box>
         ))}
       </Box>
-      <p>${totalPrice}</p>
+      <Typography mt={2} variant='h3' fontWeight='bold'>Total Price: ${totalPrice}</Typography>
       {clientSecret && stripePromise && (
         <Elements stripe={stripePromise} options={{ clientSecret}}>
           <CheckoutForm />

@@ -3,7 +3,7 @@ import {BrowserRouter, Routes, Route, useLocation} from 'react-router-dom';
 import Home from './pages/home/Home';
 import ItemDetails from "./pages/itemDetails/ItemDetails";
 import Checkout from "./pages/checkout/Checkout";
-import Confirmation from "./pages/checkout/Confirmation";
+//import Confirmation from "./pages/checkout/Confirmation";
 import Navbar from "./pages/global/Navbar";
 import CartMenu from "./pages/global/CartMenu";
 import Footer from "./pages/global/Footer";
@@ -36,7 +36,7 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='/item/:itemId' element={<ItemDetails />} />
           <Route path='/checkout' element={<Checkout />} />
-          <Route path='/checkout/success' element={<Confirmation />} />
+          {/* <Route path='/checkout/success' element={<Confirmation />} /> */}
           <Route path='/payment' element={<Payment />} />
           <Route path='/completion' element={<Completion />} />
         </Routes>
