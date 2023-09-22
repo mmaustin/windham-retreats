@@ -7,7 +7,7 @@ import { addToCart } from "../state";
 import { useNavigate } from "react-router-dom";
 
 
-const Item = ({item, width}) => { 
+const Item = ({item}) => { 
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Item = ({item, width}) => {
   //console.log(typeof _id);
 
   return (
-    <Box width={width} >
+    <Box  >
       <Box
         position='relative'
         onMouseOver={()=> setIsHovered(true)}
@@ -30,7 +30,7 @@ const Item = ({item, width}) => {
         <img
           alt={item.name}
           width='300px'
-          height='400px'
+          height='300px'
           src={`../src/assets/${picturePath}`}
           onClick={()=> navigate(`/item/${item._id}`)}
           style={{cursor: 'pointer'}}
