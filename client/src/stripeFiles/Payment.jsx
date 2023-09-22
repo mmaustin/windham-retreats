@@ -3,9 +3,7 @@ import {loadStripe} from '@stripe/stripe-js';
 import CheckoutForm from "./CheckoutForm";
 import {Elements} from '@stripe/react-stripe-js';
 import { useSelector } from "react-redux";
-import { Box, Divider, IconButton, Typography} from '@mui/material';
-import { Close, Add, Remove } from "@mui/icons-material";
-import { shades } from "../theme";
+import { Box, Divider, Typography} from '@mui/material';
 import styled from '@emotion/styled';
 
 const FlexBox = styled(Box)`
@@ -33,7 +31,6 @@ const Payment = () => {
     })
   }, []);
 
-  //const data = {amount: 25000, currency: 'usd'};
 
   useEffect(() => {
     fetch("/api/v1/create-payment-intent", {
@@ -43,7 +40,6 @@ const Payment = () => {
     }).then(async (result) => {
       let { clientSecret } = await result.json();
       setClientSecret(clientSecret);
-      //console.log(clientSecret);
     });
   }, []);
 
@@ -67,28 +63,14 @@ const Payment = () => {
                   <Typography fontWeight='bold'>
                     {item.name}
                   </Typography>
-                  {/* <IconButton onClick={()=> dispatch(removeFromCart({id: item._id}))} >
-                    <Close />
-                  </IconButton> */}
                 </FlexBox>
                 <Typography >{item.description}</Typography>
                 <FlexBox m='15px 0'>
                   <Box 
                     display='flex'
                     alignItems='center'
-                    // border={`1.5px solid ${shades.neutral[500]}`}
                   >
-                    {/* <IconButton
-                      // onClick={()=> dispatch(decreaseCount({id: item._id}))}
-                    >
-                      <Remove />
-                    </IconButton> */}
                     <Typography variant='h4' fontWeight='bold'>{item.count}</Typography>
-                    {/* <IconButton
-                      // onClick={()=> dispatch(increaseCount({id: item._id}))}
-                    >
-                      <Add />
-                    </IconButton>                         */}
                   </Box>
                   <Typography fontWeight='bold'>
                     {item.displayAmount}
