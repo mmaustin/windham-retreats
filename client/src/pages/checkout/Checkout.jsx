@@ -59,7 +59,7 @@ const Checkout = () => {
         </Step>
       </Stepper>
       <Box>
-        {isFirst &&
+        {isFirst && activeCustomer?.length === 0 &&
           <Box m='30px auto'>
             <Box>
               <Typography sx={{mb: '15px'}} fontSize='18px'>
@@ -145,7 +145,7 @@ const Checkout = () => {
             </Box>
           </Box>       
         }
-        {isSecond && (
+        {isSecond || activeCustomer?.length === 1 && (
           <Box m='30px auto'>
             <Box>
               <Typography sx={{mb: '15px'}} fontSize='18px'>
