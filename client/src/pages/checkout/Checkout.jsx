@@ -17,15 +17,17 @@ const Checkout = () => {
   const cart = useSelector(state => state.cart);
   console.log(cart);
   const activeCustomer = useSelector(state => state.customer);
-  const isFirst = activeStep === 0;
-  const isSecond = activeStep === 1;
+  // const isFirst = activeStep === 0;
+  // const isSecond = activeStep === 1;
   console.log(activeCustomer);
 
   useEffect(() => {
     if(activeCustomer?.length === 1){
       setActiveStep(activeStep + 1);
+    } else if (activeCustomer?.length === 0){
+      setActiveStep(0);
     }
-  }, [])
+  }, [activeCustomer]) // eslint-disable-line react-hooks/exhaustive-deps
 
   // const isNonMobile = useMediaQuery("(min-width:600px)");
   // console.log(activeStep);

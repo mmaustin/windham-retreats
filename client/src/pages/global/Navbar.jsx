@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {PersonOutline, ShoppingBagOutlined, MenuOutlined, SearchOutlined} from '@mui/icons-material';
 import { Badge, Box, IconButton } from '@mui/material';
 import { shades} from '../../theme';
-import { setIsCartOpen } from '../../state';
+import { setIsCartOpen, removeCustomer } from '../../state';
 // import customFetch from '../../utils/customFetch';
 // import { useEffect } from 'react';
 
@@ -66,7 +66,10 @@ const Navbar = () => {
           <IconButton sx={{color: 'black'}}>
              <SearchOutlined />
           </IconButton>
-          <IconButton sx={{color: 'black'}}>
+          <IconButton
+            onClick={() => dispatch(removeCustomer())}
+            sx={{color: 'black'}}
+          >
              <PersonOutline />
           </IconButton>
           <Badge
