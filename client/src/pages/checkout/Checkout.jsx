@@ -1,7 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, TextField} from '@mui/material';
 import { useState, useEffect } from 'react';
-//import {shades} from '../../theme';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
 import { getCustomer } from '../../state';
@@ -29,9 +28,6 @@ const Checkout = () => {
     }
   }, [activeCustomer]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  // const isNonMobile = useMediaQuery("(min-width:600px)");
-  // console.log(activeStep);
-
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -46,11 +42,9 @@ const Checkout = () => {
       //if async data fetch fells, the error below is an axios error
       const {data} = await customFetch.post('/auth/register', instanceData);
       dispatch(getCustomer({customer: data.user}))
-      //setActiveStep(activeStep + 1);
     } catch (error) {
       //an axios error whose message can be overwritten
       if(error){
-        //error.message = "coocoo for cocoa puffs!"
         console.log(error.message);
       }
     }

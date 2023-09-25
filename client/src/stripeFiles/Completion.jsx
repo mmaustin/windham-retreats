@@ -9,7 +9,7 @@ const Completion = () => {
   useEffect(() => {
     dispatch(emptyCart());
     dispatch(removeCustomer());
-  }, [])
+  }, [])  // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div style={{marginTop: '60px'}}>
