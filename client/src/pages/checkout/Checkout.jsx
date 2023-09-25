@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, TextField} from '@mui/material';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 //import {shades} from '../../theme';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
@@ -21,6 +21,12 @@ const Checkout = () => {
   const isSecond = activeStep === 1;
   console.log(activeCustomer);
 
+  useEffect(() => {
+    if(activeCustomer?.length === 1){
+      setActiveStep(activeStep + 1);
+    }
+  }, [])
+
   // const isNonMobile = useMediaQuery("(min-width:600px)");
   // console.log(activeStep);
 
@@ -38,7 +44,7 @@ const Checkout = () => {
       //if async data fetch fells, the error below is an axios error
       const {data} = await customFetch.post('/auth/register', instanceData);
       dispatch(getCustomer({customer: data.user}))
-      setActiveStep(activeStep + 1);
+      //setActiveStep(activeStep + 1);
     } catch (error) {
       //an axios error whose message can be overwritten
       if(error){
@@ -59,7 +65,7 @@ const Checkout = () => {
         </Step>
       </Stepper>
       <Box>
-        {isFirst && activeCustomer?.length === 0 &&
+        {activeCustomer?.length === 0 &&
           <Box m='30px auto'>
             <Box>
               <Typography sx={{mb: '15px'}} fontSize='18px'>
@@ -145,7 +151,7 @@ const Checkout = () => {
             </Box>
           </Box>       
         }
-        {isSecond || activeCustomer?.length === 1 && (
+        {activeCustomer?.length === 1 && (
           <Box m='30px auto'>
             <Box>
               <Typography sx={{mb: '15px'}} fontSize='18px'>
