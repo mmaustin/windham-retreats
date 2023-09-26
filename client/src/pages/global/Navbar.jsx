@@ -6,13 +6,14 @@ import { shades} from '../../theme';
 import { setIsCartOpen, removeCustomer } from '../../state';
 import CustomerInfo from '../../components/CustomerInfo';
 
-
 const Navbar = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
   const cart = useSelector(state => state.cart);
+  const {name, lastName, email, phoneNumber, zipCode} = useSelector(state => state.customer[0]);
+  console.log(name, lastName);
 
   return (
     <Box
@@ -76,7 +77,9 @@ const Navbar = () => {
               <ShoppingBagOutlined />
             </IconButton>
           </Badge>
-          <CustomerInfo />
+          {name &&
+            <CustomerInfo name={name} lastName={lastName} email={email} phoneNumber={phoneNumber} zipCode={zipCode}/>
+          }
           {/* <IconButton sx={{color: 'black'}}>
              <MenuOutlined />
           </IconButton> */}

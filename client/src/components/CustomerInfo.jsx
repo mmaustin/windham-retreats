@@ -1,12 +1,11 @@
 import {Button, Dialog, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 
-const CustomerInfo = () => {
+const CustomerInfo = (props) => {
+  console.log(props);
 
   const [open, setOpen] = useState(false);
-  const customer = useSelector(state => state.customer);
-  console.log(customer);
+
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -19,7 +18,7 @@ const CustomerInfo = () => {
   return (
     <div>
       <Button variant="contained" onClick={handleClickOpen}>
-        How It Works
+        Customer Information
       </Button>
       <Dialog
         open={open}

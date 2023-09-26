@@ -14,11 +14,11 @@ const Checkout = () => {
 
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector(state => state.cart);
-  console.log(cart);
+  //console.log(cart);
   const activeCustomer = useSelector(state => state.customer);
   // const isFirst = activeStep === 0;
   // const isSecond = activeStep === 1;
-  console.log(activeCustomer);
+  //console.log(activeCustomer);
 
   useEffect(() => {
     if(activeCustomer?.length === 1){
