@@ -1,8 +1,13 @@
 import {Button, Dialog, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { removeCustomer } from '../state';
+import { useNavigate } from 'react-router-dom';
 
 const CustomerInfo = (props) => {
-  console.log(props);
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const fullName = `${props.name} ${props.lastName}`;
 
@@ -15,7 +20,12 @@ const CustomerInfo = (props) => {
 
   const handleClose = () => {
     setOpen(false);
-  };  
+  };
+
+  const handleSessionEnd = () => {
+    dispatch(removeCustomer());
+    navigate('/');
+  }
 
   return (
     <div>
@@ -47,6 +57,7 @@ const CustomerInfo = (props) => {
           </DialogContentText>
         </DialogContent>
         <Button
+          onClick={handleSessionEnd}
           variant='outlined'
           sx={{ backgroundColor: 'beige', color: 'black', fontWeight: 'bold' }}
         >

@@ -12,7 +12,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   
   const cart = useSelector(state => state.cart);
-  const {name, lastName, email, phoneNumber, zipCode} = useSelector(state => state.customer[0]);
+  const customer = useSelector(state => state.customer[0]);
 
   return (
     <Box
@@ -76,8 +76,8 @@ const Navbar = () => {
               <ShoppingBagOutlined />
             </IconButton>
           </Badge>
-          {name &&
-            <CustomerInfo name={name} lastName={lastName} email={email} phoneNumber={phoneNumber} zipCode={zipCode}/>
+          {customer?.name &&
+            <CustomerInfo name={customer?.name} lastName={customer?.lastName} email={customer?.email} phoneNumber={customer?.phoneNumber} zipCode={customer?.zipCode}/>
           }
           {/* <IconButton sx={{color: 'black'}}>
              <MenuOutlined />
