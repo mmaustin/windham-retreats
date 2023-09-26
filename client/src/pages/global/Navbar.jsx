@@ -13,7 +13,6 @@ const Navbar = () => {
   
   const cart = useSelector(state => state.cart);
   const {name, lastName, email, phoneNumber, zipCode} = useSelector(state => state.customer[0]);
-  console.log(name, lastName);
 
   return (
     <Box
