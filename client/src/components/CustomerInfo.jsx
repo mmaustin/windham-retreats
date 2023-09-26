@@ -46,4 +46,4 @@ const CustomerInfo = () => {
     </div>
   )
 }
-export default CustomerInfo
+export default CustomerInfo;

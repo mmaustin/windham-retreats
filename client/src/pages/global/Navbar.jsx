@@ -4,6 +4,8 @@ import {PersonOutline, ShoppingBagOutlined, MenuOutlined, SearchOutlined} from '
 import { Badge, Box, IconButton } from '@mui/material';
 import { shades} from '../../theme';
 import { setIsCartOpen, removeCustomer } from '../../state';
+import CustomerInfo from '../../components/CustomerInfo';
+
 
 const Navbar = () => {
 
@@ -45,7 +47,7 @@ const Navbar = () => {
           columnGap='20px'
           zIndex='2'
         >
-          <IconButton sx={{color: 'black'}}>
+          {/* <IconButton sx={{color: 'black'}}>
              <SearchOutlined />
           </IconButton>
           <IconButton
@@ -53,7 +55,7 @@ const Navbar = () => {
             sx={{color: 'black'}}
           >
              <PersonOutline />
-          </IconButton>
+          </IconButton> */}
           <Badge
             badgeContent={cart.length}
             color='secondary'
@@ -74,9 +76,10 @@ const Navbar = () => {
               <ShoppingBagOutlined />
             </IconButton>
           </Badge>
-          <IconButton sx={{color: 'black'}}>
+          <CustomerInfo />
+          {/* <IconButton sx={{color: 'black'}}>
              <MenuOutlined />
-          </IconButton>
+          </IconButton> */}
         </Box>
       </Box>
     </Box>
