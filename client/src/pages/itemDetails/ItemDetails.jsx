@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { addToCart, removeFromCart } from "../../state";
 import { shades } from "../../theme";
 import Item from '../../components/Item';
+import MessageForm from "../global/MessageForm";
 
 const ItemDetails = () => {
 
@@ -79,9 +80,9 @@ const ItemDetails = () => {
             >
               ADD TO CART
             </Button>
-
           </Box>
         </Box>
+        <MessageForm />
       </Box>
     </Box>
   )

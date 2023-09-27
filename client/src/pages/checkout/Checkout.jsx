@@ -6,6 +6,7 @@ import getFormValues from '../../utils/getFormValues';
 import { getCustomer } from '../../state';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
+import MessageForm from '../global/MessageForm';
 
 const FlexBox = styled(Box)`
   display: flex;
@@ -226,6 +227,7 @@ const Checkout = () => {
             </Box>
           </Box>
         )}
+        <MessageForm />
       </Box>
     </Box>
   )
