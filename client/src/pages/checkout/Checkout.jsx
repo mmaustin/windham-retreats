@@ -21,6 +21,12 @@ const Checkout = () => {
 
   const [activeStep, setActiveStep] = useState(0);
   const cart = useSelector(state => state.cart);
+
+  let totalPrice = cart?.reduce((total, item) => {
+    return total + item.count * item.unitAmount
+  }, 0);
+
+  totalPrice = totalPrice/100 + '.00';
   //console.log(cart);
   const activeCustomer = useSelector(state => state.customer);
   // const isFirst = activeStep === 0;
@@ -170,11 +176,11 @@ const Checkout = () => {
                 }}
               >
                 {cart.map(item => (
-                  <Box key={`${item.name}-${item._id}`}>
+                  <Box key={`${item?.name}-${item?._id}`}>
                     <FlexBox p='15px 0' >
                       <Box flex='1 1 40%'>
                         <img
-                          src={`../../src/assets/${item.picturePath}`}
+                          src={`../../src/assets/${item?.picturePath}`}
                           alt={item?.name}
                           height='164px'
                           width='123px'
@@ -183,16 +189,16 @@ const Checkout = () => {
                       <Box flex='1 1 60%'>
                         <FlexBox mb='5px'>
                           <Typography fontWeight='bold'>
-                            {item.name}
+                            {item?.name}
                           </Typography>
                         </FlexBox>
-                        <Typography >{item.description}</Typography>
+                        <Typography >{item?.description}</Typography>
                         <FlexBox m='15px 0'>
                           <Box 
                             display='flex'
                             alignItems='center'
                           >
-                            <Typography variant='h4' fontWeight='bold'>{item.count}</Typography>
+                            <Typography variant='h4' fontWeight='bold'>{item?.count}</Typography>
                           </Box>
                           <Typography fontWeight='bold'>
                             {item.displayAmount}
@@ -200,14 +206,21 @@ const Checkout = () => {
                         </FlexBox>
                       </Box>
                     </FlexBox>
+                    <Typography mt={2} variant='h3' fontWeight='bold'>Total Price: ${totalPrice}</Typography>
                     <Divider />
                   </Box>
                 ))}
-                <Typography variant='h2'>
-                  Go To Order Page
+                <Typography variant='h3'>
+                  If Correct
                 </Typography>
                 <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/payment')}>
                   Proceed To Order
+                </Button>
+                <Typography variant='h3'>
+                  Otherwise:
+                </Typography>
+                <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/')}>
+                  Continue Shopping
                 </Button>
               </Box>
             </Box>
