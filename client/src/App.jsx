@@ -9,14 +9,13 @@ import CartMenu from "./pages/global/CartMenu";
 import Footer from "./pages/global/Footer";
 import Payment from './stripeFiles/Payment';
 import Completion from './stripeFiles/Completion';
-import MessageForm from "./pages/global/MessageForm";
-
-//import MainCarousel from "./pages/home/MainCarousel";
-
-//import pic from './'
+// import MessageForm from "./pages/global/MessageForm";
+import EmptyCart from "./components/EmptyCart";
+import { useSelector } from "react-redux";
 
 
 const ScrollToTop = () => {
+
   const {pathname} = useLocation();
 
   useEffect(() => {
@@ -27,6 +26,9 @@ const ScrollToTop = () => {
 }
 
 const App = () => {
+  
+  const cart = useSelector(state => state.cart);
+
   return (
     <div className="app">
       <BrowserRouter>
@@ -37,11 +39,11 @@ const App = () => {
           <Route path='/item/:itemId' element={<ItemDetails />} />
           <Route path='/checkout' element={<Checkout />} />
           {/* <Route path='/checkout/success' element={<Confirmation />} /> */}
-          <Route path='/payment' element={<Payment />} />
+          <Route path='/payment' element={cart.length > 0 ? <Payment /> : <EmptyCart />} />
           <Route path='/completion' element={<Completion />} />
         </Routes>
         <CartMenu />
-        <MessageForm />
+        {/* <MessageForm /> */}
         <Footer />
       </BrowserRouter>
     </div>
