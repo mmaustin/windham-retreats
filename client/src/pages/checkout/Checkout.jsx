@@ -1,10 +1,17 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, TextField} from '@mui/material';
+import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, TextField, Divider} from '@mui/material';
 import { useState, useEffect } from 'react';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
 import { getCustomer } from '../../state';
 import { useNavigate } from 'react-router-dom';
+import styled from '@emotion/styled';
+
+const FlexBox = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
 
 
 const Checkout = () => {
@@ -162,6 +169,40 @@ const Checkout = () => {
                   alignItems: 'center',
                 }}
               >
+                {cart.map(item => (
+                  <Box key={`${item.name}-${item._id}`}>
+                    <FlexBox p='15px 0' >
+                      <Box flex='1 1 40%'>
+                        <img
+                          src={`../../src/assets/${item.picturePath}`}
+                          alt={item?.name}
+                          height='164px'
+                          width='123px'
+                        />
+                      </Box>
+                      <Box flex='1 1 60%'>
+                        <FlexBox mb='5px'>
+                          <Typography fontWeight='bold'>
+                            {item.name}
+                          </Typography>
+                        </FlexBox>
+                        <Typography >{item.description}</Typography>
+                        <FlexBox m='15px 0'>
+                          <Box 
+                            display='flex'
+                            alignItems='center'
+                          >
+                            <Typography variant='h4' fontWeight='bold'>{item.count}</Typography>
+                          </Box>
+                          <Typography fontWeight='bold'>
+                            {item.displayAmount}
+                          </Typography>
+                        </FlexBox>
+                      </Box>
+                    </FlexBox>
+                    <Divider />
+                  </Box>
+                ))}
                 <Typography variant='h2'>
                   Go To Order Page
                 </Typography>

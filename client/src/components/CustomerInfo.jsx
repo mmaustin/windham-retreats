@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {Button, Dialog, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -44,7 +45,7 @@ const CustomerInfo = (props) => {
         </DialogTitle>
         <DialogContent >
           <DialogContentText fontWeight='bold' id="alert-dialog-description">
-            Email: {props.email}
+            Email: {props.email} 
           </DialogContentText>
         </DialogContent>
         <DialogContent>
