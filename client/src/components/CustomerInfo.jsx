@@ -1,7 +1,7 @@
 import {Button, Dialog, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeCustomer } from '../state';
+import { removeCustomer, emptyCart } from '../state';
 import { useNavigate } from 'react-router-dom';
 
 const CustomerInfo = (props) => {
@@ -24,6 +24,7 @@ const CustomerInfo = (props) => {
 
   const handleSessionEnd = () => {
     dispatch(removeCustomer());
+    dispatch(emptyCart());
     navigate('/');
   }
 
