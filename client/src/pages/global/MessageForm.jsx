@@ -22,12 +22,6 @@ function MessageForm() {
       //if async data fetch fells, the error below is an axios error
       const {data} = await customFetch.post('/messages', instanceData);
       console.log(data.success);
-      // instanceData.messenger = '';
-      // instanceData.email = '';
-      // instanceData.phoneNumber = '';
-      // instanceData.content = '';
-      // console.log(instanceData);
-      
     } catch (error) {
       //an axios error whose message can be overwritten
       if(error){
