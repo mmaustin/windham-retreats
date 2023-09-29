@@ -21,9 +21,9 @@ const Footer = () => {
           <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
             Windham Yoga
           </Typography>
-          <div>
-            Situation in the lovely Catskills Mountains, this hill-top lodge is the perfect getaway for peaceful connection with nature.  Hiking trails and waterfalls abound in the surrounding region, providing plenty of opportunities to relax and reboot.
-          </div>
+          <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
+            Situation in the lovely Catskills Mountains, this hill-top lodge is the perfect getaway for peaceful connection with nature.
+          </Typography>
         </Box>
 
         <Box width='clamp(20%, 30%, 40%)'>

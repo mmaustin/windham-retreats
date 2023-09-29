@@ -31,11 +31,8 @@ const Checkout = () => {
   }, 0);
 
   totalPrice = totalPrice/100 + '.00';
-  //console.log(cart);
+
   const activeCustomer = useSelector(state => state.customer);
-  // const isFirst = activeStep === 0;
-  // const isSecond = activeStep === 1;
-  //console.log(activeCustomer);
 
   useEffect(() => {
     if(activeCustomer?.length === 1){
@@ -83,6 +80,7 @@ const Checkout = () => {
             <Box>
 
               <Box
+                bgcolor={info.light}
                 sx={{
                   marginTop: 8,
                   display: 'flex',
@@ -93,10 +91,10 @@ const Checkout = () => {
                   borderRadius: '16px'
                 }}
               >
-                <Typography sx={{mb: '15px'}} fontSize='18px'>
+                <Typography color={shades.secondary[500]} sx={{m: '30px 0'}} variant='h3' fontWeight='bold'>
                   Customer Information
                 </Typography>
-                <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
+                <Box m='10px' component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                       <TextField

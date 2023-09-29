@@ -44,13 +44,13 @@ function MessageForm() {
           <Box>
             <Box
               sx={{
-                marginTop: 8,
+                marginTop: 0,
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
               }}
             >
-              <Typography color={shades.secondary[500]} variant='h3' fontWeight='bold'>Send Us A Message</Typography>
+              <Typography sx={{m: '15px 0'}} color={shades.secondary[500]} variant='h3' fontWeight='bold'>Send Us A Message</Typography>
               <Box m='10px' component="form" onSubmit={onSubmit} sx={{ mt: 3, display: 'flex', flexDirection: 'column' }}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
