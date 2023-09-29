@@ -1,15 +1,19 @@
 import MainCarousel from './MainCarousel';
 import ShoppingList from './ShoppingList';
 import MessageForm from '../global/MessageForm';
+import { Box } from '@mui/material';
+
 
 const Home = () => {
   return (
     <>
-      <div className='home' style={{marginTop: '60px'}}>
+      <Box className='home' style={{marginTop: '60px'}}>
         <MainCarousel />
         <ShoppingList />
-        <MessageForm />
-      </div>
+        <Box width='80%' m='0px auto'>
+          <MessageForm />
+        </Box>
+      </Box>
     </>
   )
 }

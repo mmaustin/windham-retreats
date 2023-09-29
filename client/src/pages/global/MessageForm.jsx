@@ -1,7 +1,7 @@
-import {Box, Grid, Button, TextField, useTheme} from '@mui/material';
+import {Box, Grid, Button, TextField, useTheme, Typography} from '@mui/material';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
-
+import { shades } from '../../theme';
 
 function MessageForm() {
 
@@ -38,7 +38,7 @@ function MessageForm() {
   }
 
   return (
-    <Box width='80%' m='10px auto' bgcolor={info.light} sx={{border: 2 , borderColor: 'black', borderRadius: '16px'}}>
+    <Box width='100%' m='10px auto' bgcolor={info.light} sx={{border: 2 , borderColor: 'black', borderRadius: '16px'}}>
       <Box>
         <Box m='30px auto'>
           <Box>
@@ -50,6 +50,7 @@ function MessageForm() {
                 alignItems: 'center',
               }}
             >
+              <Typography color={shades.secondary[500]} variant='h3' fontWeight='bold'>Send Us A Message</Typography>
               <Box m='10px' component="form" onSubmit={onSubmit} sx={{ mt: 3, display: 'flex', flexDirection: 'column' }}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>

@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux';
-import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, TextField, Divider} from '@mui/material';
+import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, TextField, Divider, useTheme} from '@mui/material';
 import { useState, useEffect } from 'react';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
@@ -7,6 +7,7 @@ import { getCustomer } from '../../state';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import MessageForm from '../global/MessageForm';
+import { shades } from '../../theme';
 
 const FlexBox = styled(Box)`
   display: flex;
@@ -16,6 +17,8 @@ const FlexBox = styled(Box)`
 
 
 const Checkout = () => {
+
+  const {palette: {info }} = useTheme();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -78,9 +81,6 @@ const Checkout = () => {
         {activeCustomer?.length === 0 &&
           <Box m='30px auto'>
             <Box>
-              <Typography sx={{mb: '15px'}} fontSize='18px'>
-                Customer Information
-              </Typography>
 
               <Box
                 sx={{
@@ -88,8 +88,14 @@ const Checkout = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
+                  border: 2 ,
+                  borderColor: 'black',
+                  borderRadius: '16px'
                 }}
               >
+                <Typography sx={{mb: '15px'}} fontSize='18px'>
+                  Customer Information
+                </Typography>
                 <Box component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
