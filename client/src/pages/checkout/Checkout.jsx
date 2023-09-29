@@ -168,9 +168,6 @@ const Checkout = () => {
         {activeCustomer?.length === 1 && (
           <Box m='30px auto'>
             <Box>
-              <Typography sx={{mb: '15px'}} fontSize='18px'>
-                Customer Confirmation
-              </Typography>
 
               <Box
                 sx={{
@@ -180,6 +177,9 @@ const Checkout = () => {
                   alignItems: 'center',
                 }}
               >
+                <Typography sx={{mb: '15px'}} fontSize='18px'>
+                  Customer Confirmation
+                </Typography>
                 {cart.map(item => (
                   <Box key={`${item?.name}-${item?._id}`}>
                     <FlexBox p='15px 0' >

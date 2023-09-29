@@ -2,12 +2,12 @@ import { useDispatch } from "react-redux";
 import { emptyCart, removeCustomer } from "../state";
 import { useEffect } from "react";
 import { shades } from "../theme";
-import { useTheme } from "@emotion/react";
+//import { useTheme } from "@emotion/react";
 import { Box, Typography} from "@mui/material";
 
 const Completion = () => {
 
-  const {palette: {info }} = useTheme();  
+  //const {palette: {info }} = useTheme();  
 
   const dispatch = useDispatch();
 
