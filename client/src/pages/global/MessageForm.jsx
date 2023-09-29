@@ -1,10 +1,11 @@
-import {Box, Grid, Button, TextField} from '@mui/material';
+import {Box, Grid, Button, TextField, useTheme} from '@mui/material';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
 
 
-
 function MessageForm() {
+
+  const {palette: {info }} = useTheme();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +38,7 @@ function MessageForm() {
   }
 
   return (
-    <Box width='80%' m='40px auto'>
+    <Box width='80%' m='10px auto' bgcolor={info.light} sx={{border: 2 , borderColor: 'black', borderRadius: '16px'}}>
       <Box>
         <Box m='30px auto'>
           <Box>
@@ -49,7 +50,7 @@ function MessageForm() {
                 alignItems: 'center',
               }}
             >
-              <Box component="form" onSubmit={onSubmit} sx={{ mt: 3, display: 'flex', flexDirection: 'column' }}>
+              <Box m='10px' component="form" onSubmit={onSubmit} sx={{ mt: 3, display: 'flex', flexDirection: 'column' }}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
                     <TextField
@@ -92,7 +93,6 @@ function MessageForm() {
                       label="Message"
                       multiline
                       rows={4}
-                      defaultValue="Default Value"
                       id="content"
                       // autoComplete="new-password"
                     />
