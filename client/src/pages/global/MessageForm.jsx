@@ -1,38 +1,53 @@
-import {Box, Grid, Button, TextField, useTheme, Typography} from '@mui/material';
+import { Box, Grid, Button, TextField, useTheme, Typography } from '@mui/material';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
 import { shades } from '../../theme';
+import { useState } from 'react';
 
 function MessageForm() {
 
-  const {palette: {info }} = useTheme();
+  const [messenger, setMessenger] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [content, setContent] = useState('');
+
+  const handleChange = e => [e.target.name] = e.target.value;
+
+  const { palette: { info } } = useTheme();
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const {isEmpty, instanceData} = getFormValues(e.currentTarget);
-    console.log(e.currentTarget);
-     
-    if(isEmpty) {
-      console.log('please provide all values');
+    if (!messenger || !email || !phoneNumber || !content) {
+      console.log('Please Add All Values');
       return;
     }
-    
-    try {
-      //if async data fetch fells, the error below is an axios error
-      const {data} = await customFetch.post('/messages', instanceData);
-      console.log(data.success);
-    } catch (error) {
-      //an axios error whose message can be overwritten
-      if(error){
-        //error.message = "coocoo for cocoa puffs!"
-        console.log(error.message);
-      }
-    }
+
+    console.log((messenger, email, phoneNumber, content));
+
+    // const { isEmpty, instanceData } = getFormValues(e.currentTarget);
+    // console.log(e.currentTarget);
+
+    // if (isEmpty) {
+    //   console.log('please provide all values');
+    //   return;
+    // }
+
+    // try {
+    //   //if async data fetch fells, the error below is an axios error
+    //   const { data } = await customFetch.post('/messages', instanceData);
+    //   console.log(data.success);
+    // } catch (error) {
+    //   //an axios error whose message can be overwritten
+    //   if (error) {
+    //     //error.message = "coocoo for cocoa puffs!"
+    //     console.log(error.message);
+    //   }
+    // }
   }
 
   return (
-    <Box width='100%' m='10px auto' bgcolor={info.light} sx={{border: 2 , borderColor: 'black', borderRadius: '16px'}}>
+    <Box width='100%' m='10px auto' bgcolor={info.light} sx={{ border: 2, borderColor: 'black', borderRadius: '16px' }}>
       <Box>
         <Box m='30px auto'>
           <Box>
@@ -44,7 +59,7 @@ function MessageForm() {
                 alignItems: 'center',
               }}
             >
-              <Typography sx={{m: '15px 0'}} color={shades.secondary[500]} variant='h3' fontWeight='bold'>Send Us A Message</Typography>
+              <Typography sx={{ m: '15px 0' }} color={shades.secondary[500]} variant='h3' fontWeight='bold'>Send Us A Message</Typography>
               <Box m='10px' component="form" onSubmit={onSubmit} sx={{ mt: 3, display: 'flex', flexDirection: 'column' }}>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
@@ -77,7 +92,7 @@ function MessageForm() {
                       label="Phone Number"
                       type="text"
                       id="phoneNumber"
-                      // autoComplete="new-password"
+                    // autoComplete="new-password"
                     />
                   </Grid>
                   <Grid item xs={12} >
@@ -89,7 +104,7 @@ function MessageForm() {
                       multiline
                       rows={4}
                       id="content"
-                      // autoComplete="new-password"
+                    // autoComplete="new-password"
                     />
                   </Grid>
                 </Grid>
@@ -102,10 +117,10 @@ function MessageForm() {
                   Send
                 </Button>
               </Box>
-            </Box>              
+            </Box>
           </Box>
         </Box>
-      </Box>      
+      </Box>
     </Box>
   )
 }
