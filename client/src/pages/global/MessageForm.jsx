@@ -1,23 +1,28 @@
 import { Box, Grid, Button, TextField, useTheme, Typography } from '@mui/material';
-import customFetch from '../../utils/customFetch';
-import getFormValues from '../../utils/getFormValues';
+// import customFetch from '../../utils/customFetch';
+// import getFormValues from '../../utils/getFormValues';
 import { shades } from '../../theme';
 import { useState } from 'react';
 
+const initialState = {
+  messenger: '',
+  email: '',
+  phoneNumber: '',
+  content: ''
+}
+
 function MessageForm() {
 
-  const [messenger, setMessenger] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [content, setContent] = useState('');
+  const [values, setValues] = useState(initialState);
 
-  const handleChange = e => [e.target.name] = e.target.value;
+  const handleChange = e => setValues({ ...values, [e.target.name]: e.target.value });
 
   const { palette: { info } } = useTheme();
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
+    const { messenger, email, phoneNumber, content } = values;
     if (!messenger || !email || !phoneNumber || !content) {
       console.log('Please Add All Values');
       return;
@@ -72,6 +77,8 @@ function MessageForm() {
                       label="Name"
                       autoFocus
                       type='text'
+                      value={values.messenger}
+                      onChange={e => handleChange(e)}
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -82,6 +89,8 @@ function MessageForm() {
                       label="Email Address"
                       name="email"
                       autoComplete="email"
+                      value={values.email}
+                      onChange={e => handleChange(e)}
                     />
                   </Grid>
                   <Grid item xs={12} >
@@ -92,6 +101,8 @@ function MessageForm() {
                       label="Phone Number"
                       type="text"
                       id="phoneNumber"
+                      value={values.phoneNumber}
+                      onChange={e => handleChange(e)}
                     // autoComplete="new-password"
                     />
                   </Grid>
@@ -104,6 +115,8 @@ function MessageForm() {
                       multiline
                       rows={4}
                       id="content"
+                      value={values.content}
+                      onChange={e => handleChange(e)}
                     // autoComplete="new-password"
                     />
                   </Grid>
