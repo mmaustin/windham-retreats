@@ -34,13 +34,14 @@ function MessageForm() {
       //if async data fetch fells, the error below is an axios error
       await customFetch.post('/messages', values);
       setMessageReceived(true);
+      setValues({ ...values, messenger: '', email: '', phoneNumber: '', content: '' });
       setTimeout(() => {
         setMessageReceived(false);
       }, 4000);
     } catch (error) {
       //an axios error whose message can be overwritten
       if (error) {
-        error.message = "Error, Please Try Again."
+        error.message = "Error, Check Phone Number Format."
         setMessageFailed(error.message);
         setTimeout(() => {
           setMessageFailed('');
@@ -48,7 +49,7 @@ function MessageForm() {
       }
     }
 
-    setValues({ ...values, messenger: '', email: '', phoneNumber: '', content: '' });
+
 
     // const { isEmpty, instanceData } = getFormValues(e.currentTarget);
     // console.log(e.currentTarget);
@@ -98,6 +99,7 @@ function MessageForm() {
                   </Grid>
                   <Grid item xs={12} sm={6}>
                     <TextField
+                      type='email'
                       required
                       fullWidth
                       id="email"
@@ -110,6 +112,7 @@ function MessageForm() {
                   </Grid>
                   <Grid item xs={12} >
                     <TextField
+                      placeholder='111-222-3333'
                       required
                       fullWidth
                       name="phoneNumber"

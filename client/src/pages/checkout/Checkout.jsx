@@ -1,5 +1,5 @@
-import {useSelector, useDispatch} from 'react-redux';
-import {Box, Grid, Button, Stepper, Step, StepLabel, Typography, TextField, Divider, useTheme} from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
+import { Box, Grid, Button, Stepper, Step, StepLabel, Typography, TextField, Divider, useTheme } from '@mui/material';
 import { useState, useEffect } from 'react';
 import customFetch from '../../utils/customFetch';
 import getFormValues from '../../utils/getFormValues';
@@ -18,7 +18,7 @@ const FlexBox = styled(Box)`
 
 const Checkout = () => {
 
-  const {palette: {info }} = useTheme();
+  const { palette: { info } } = useTheme();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,14 +30,14 @@ const Checkout = () => {
     return total + item.count * item.unitAmount
   }, 0);
 
-  totalPrice = totalPrice/100 + '.00';
+  totalPrice = totalPrice / 100 + '.00';
 
   const activeCustomer = useSelector(state => state.customer);
 
   useEffect(() => {
-    if(activeCustomer?.length === 1){
+    if (activeCustomer?.length === 1) {
       setActiveStep(activeStep + 1);
-    } else if (activeCustomer?.length === 0){
+    } else if (activeCustomer?.length === 0) {
       setActiveStep(0);
     }
   }, [activeCustomer]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -45,20 +45,20 @@ const Checkout = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const {isEmpty, instanceData} = getFormValues(e.currentTarget);
-     
-    if(isEmpty) {
+    const { isEmpty, instanceData } = getFormValues(e.currentTarget);
+
+    if (isEmpty) {
       console.log('please provide all values');
       return;
     }
-    
+
     try {
       //if async data fetch fells, the error below is an axios error
-      const {data} = await customFetch.post('/auth/register', instanceData);
-      dispatch(getCustomer({customer: data.user}))
+      const { data } = await customFetch.post('/auth/register', instanceData);
+      dispatch(getCustomer({ customer: data.user }))
     } catch (error) {
       //an axios error whose message can be overwritten
-      if(error){
+      if (error) {
         console.log(error.message);
       }
     }
@@ -66,7 +66,7 @@ const Checkout = () => {
 
   return (
     <Box width='80%' m='100px auto'>
-      <Stepper activeStep={activeStep} sx={{m: '20px o'}}>
+      <Stepper activeStep={activeStep} sx={{ m: '20px o' }}>
         <Step>
           <StepLabel>Customer Information</StepLabel>
         </Step>
@@ -86,12 +86,12 @@ const Checkout = () => {
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
-                  border: 2 ,
+                  border: 2,
                   borderColor: 'black',
                   borderRadius: '16px'
                 }}
               >
-                <Typography color={shades.secondary[500]} sx={{m: '30px 0'}} variant='h3' fontWeight='bold'>
+                <Typography color={shades.secondary[500]} sx={{ m: '30px 0' }} variant='h3' fontWeight='bold'>
                   Customer Information
                 </Typography>
                 <Box m='10px' component="form" onSubmit={onSubmit} sx={{ mt: 3 }}>
@@ -116,11 +116,12 @@ const Checkout = () => {
                         label="Last Name"
                         name="lastName"
                         type='text'
-                        // autoComplete="family-name"
+                      // autoComplete="family-name"
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
+                        type='email'
                         required
                         fullWidth
                         id="email"
@@ -131,24 +132,26 @@ const Checkout = () => {
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
+                        placeholder='111-222-3333'
                         required
                         fullWidth
                         name="phoneNumber"
                         label="Phone Number"
                         type="text"
                         id="phoneNumber"
-                        // autoComplete="new-password"
+                      // autoComplete="new-password"
                       />
                     </Grid>
                     <Grid item xs={12}>
                       <TextField
+                        placeholder='11111'
                         required
                         fullWidth
                         name="zipCode"
                         label="Zip Code"
                         type="text"
                         id="zipCode"
-                        // autoComplete="new-password"
+                      // autoComplete="new-password"
                       />
                     </Grid>
                   </Grid>
@@ -161,9 +164,9 @@ const Checkout = () => {
                     Submit & Confirmation
                   </Button>
                 </Box>
-              </Box>              
+              </Box>
             </Box>
-          </Box>       
+          </Box>
         }
         {activeCustomer?.length === 1 && (
           <Box m='30px auto'>
@@ -177,7 +180,7 @@ const Checkout = () => {
                   alignItems: 'center',
                 }}
               >
-                <Typography sx={{mb: '15px'}} fontSize='18px'>
+                <Typography sx={{ mb: '15px' }} fontSize='18px'>
                   Customer Confirmation
                 </Typography>
                 {cart.map(item => (
@@ -199,7 +202,7 @@ const Checkout = () => {
                         </FlexBox>
                         <Typography >{item?.description}</Typography>
                         <FlexBox m='15px 0'>
-                          <Box 
+                          <Box
                             display='flex'
                             alignItems='center'
                           >
