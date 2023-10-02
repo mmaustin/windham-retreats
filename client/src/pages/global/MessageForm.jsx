@@ -14,6 +14,8 @@ const initialState = {
 function MessageForm() {
 
   const [values, setValues] = useState(initialState);
+  const [messageReceived, setMessageReceived] = useState(false);
+  const [messageFailed, setMessageFailed] = useState('');
 
   const handleChange = e => setValues({ ...values, [e.target.name]: e.target.value });
 
@@ -30,17 +32,22 @@ function MessageForm() {
 
     try {
       //if async data fetch fells, the error below is an axios error
-      const { data } = await customFetch.post('/messages', values);
-      console.log(data.success);
+      await customFetch.post('/messages', values);
+      setMessageReceived(true);
+      setTimeout(() => {
+        setMessageReceived(false);
+      }, 4000);
     } catch (error) {
       //an axios error whose message can be overwritten
       if (error) {
-        //error.message = "coocoo for cocoa puffs!"
-        console.log(error.message);
+        error.message = "Error, Please Try Again."
+        setMessageFailed(error.message);
+        setTimeout(() => {
+          setMessageFailed('');
+        }, 4000);
       }
     }
 
-    console.log(values);
     setValues({ ...values, messenger: '', email: '', phoneNumber: '', content: '' });
 
     // const { isEmpty, instanceData } = getFormValues(e.currentTarget);
@@ -66,6 +73,12 @@ function MessageForm() {
                 alignItems: 'center',
               }}
             >
+              {messageReceived &&
+                <Typography sx={{ m: '15px 0' }} color={shades.secondary[500]} variant='h3' fontWeight='bold'>We Received Your Message!</Typography>
+              }
+              {messageFailed &&
+                <Typography sx={{ m: '15px 0' }} color={shades.secondary[500]} variant='h3' fontWeight='bold'>{messageFailed}</Typography>
+              }
               <Typography sx={{ m: '15px 0' }} color={shades.secondary[500]} variant='h3' fontWeight='bold'>Send Us A Message</Typography>
               <Box m='10px' component="form" onSubmit={onSubmit} sx={{ mt: 3, display: 'flex', flexDirection: 'column' }}>
                 <Grid container spacing={2}>
