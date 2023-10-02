@@ -1,5 +1,5 @@
 import { Box, Grid, Button, TextField, useTheme, Typography } from '@mui/material';
-// import customFetch from '../../utils/customFetch';
+import customFetch from '../../utils/customFetch';
 // import getFormValues from '../../utils/getFormValues';
 import { shades } from '../../theme';
 import { useState } from 'react';
@@ -28,7 +28,20 @@ function MessageForm() {
       return;
     }
 
-    console.log((messenger, email, phoneNumber, content));
+    try {
+      //if async data fetch fells, the error below is an axios error
+      const { data } = await customFetch.post('/messages', values);
+      console.log(data.success);
+    } catch (error) {
+      //an axios error whose message can be overwritten
+      if (error) {
+        //error.message = "coocoo for cocoa puffs!"
+        console.log(error.message);
+      }
+    }
+
+    console.log(values);
+    setValues({ ...values, messenger: '', email: '', phoneNumber: '', content: '' });
 
     // const { isEmpty, instanceData } = getFormValues(e.currentTarget);
     // console.log(e.currentTarget);
@@ -38,17 +51,6 @@ function MessageForm() {
     //   return;
     // }
 
-    // try {
-    //   //if async data fetch fells, the error below is an axios error
-    //   const { data } = await customFetch.post('/messages', instanceData);
-    //   console.log(data.success);
-    // } catch (error) {
-    //   //an axios error whose message can be overwritten
-    //   if (error) {
-    //     //error.message = "coocoo for cocoa puffs!"
-    //     console.log(error.message);
-    //   }
-    // }
   }
 
   return (
