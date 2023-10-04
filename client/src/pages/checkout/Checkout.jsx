@@ -6,7 +6,7 @@ import getFormValues from '../../utils/getFormValues';
 import { getCustomer } from '../../state';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-import MessageForm from '../global/MessageForm';
+// import MessageForm from '../global/MessageForm';
 import { shades } from '../../theme';
 
 const FlexBox = styled(Box)`
@@ -59,6 +59,7 @@ const Checkout = () => {
     } catch (error) {
       //an axios error whose message can be overwritten
       if (error) {
+        error.message = 'Check Phone Number & Zip Code Format'
         console.log(error.message);
       }
     }
@@ -234,7 +235,7 @@ const Checkout = () => {
             </Box>
           </Box>
         )}
-        <MessageForm />
+        {/* <MessageForm /> */}
       </Box>
     </Box>
   )
