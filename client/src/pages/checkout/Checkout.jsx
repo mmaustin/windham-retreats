@@ -24,6 +24,7 @@ const Checkout = () => {
   const navigate = useNavigate();
 
   const [activeStep, setActiveStep] = useState(0);
+  const [errorMessage, setErrorMessage] = useState('');
   const cart = useSelector(state => state.cart);
 
   let totalPrice = cart?.reduce((total, item) => {
@@ -61,7 +62,10 @@ const Checkout = () => {
       //an axios error whose message can be overwritten
       if (error) {
         error.message = 'Check Phone Number & Zip Code Format'
-        console.log(error.message);
+        setErrorMessage(error.message);
+        setTimeout(() => {
+          setErrorMessage('');
+        }, 4000)
       }
     }
   }
@@ -93,6 +97,9 @@ const Checkout = () => {
                   borderRadius: '16px'
                 }}
               >
+                {errorMessage &&
+                  <Typography sx={{ m: '15px 0' }} color={shades.secondary[500]} variant='h3' fontWeight='bold'>{errorMessage}</Typography>
+                }
                 <Typography color={shades.secondary[500]} sx={{ m: '30px 0' }} variant='h3' fontWeight='bold'>
                   Customer Information
                 </Typography>
