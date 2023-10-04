@@ -1,8 +1,8 @@
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {PersonOutline, ShoppingBagOutlined, MenuOutlined, SearchOutlined} from '@mui/icons-material';
+import { PersonOutline, ShoppingBagOutlined, MenuOutlined, SearchOutlined } from '@mui/icons-material';
 import { Badge, Box, IconButton } from '@mui/material';
-import { shades} from '../../theme';
+import { shades } from '../../theme';
 import { setIsCartOpen, removeCustomer } from '../../state';
 import CustomerInfo from '../../components/CustomerInfo';
 
@@ -10,7 +10,7 @@ const Navbar = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
   const cart = useSelector(state => state.cart);
   const customer = useSelector(state => state.customer[0]);
 
@@ -35,8 +35,8 @@ const Navbar = () => {
         alignItems='center'
       >
         <Box
-          onClick={()=> navigate('/')}
-          sx={{"&:hover": {cursor: 'pointer'}}}
+          onClick={() => navigate('/')}
+          sx={{ "&:hover": { cursor: 'pointer' } }}
           color={shades.secondary[500]}
         >
           WINDHAM YOGA
@@ -71,13 +71,20 @@ const Navbar = () => {
             }}
           >
             <IconButton
-              onClick={()=> dispatch(setIsCartOpen({}))}
-              sx={{color: 'black'}}>
+              onClick={() => dispatch(setIsCartOpen({}))}
+              sx={{ color: 'black' }}>
               <ShoppingBagOutlined />
             </IconButton>
           </Badge>
           {customer?.name &&
-            <CustomerInfo name={customer?.name} lastName={customer?.lastName} email={customer?.email} phoneNumber={customer?.phoneNumber} zipCode={customer?.zipCode}/>
+            <CustomerInfo
+              name={customer?.name}
+              lastName={customer?.lastName}
+              email={customer?.email}
+              phoneNumber={customer?.phoneNumber}
+              zipCode={customer?.zipCode}
+              orderNumber={customer?._id}
+            />
           }
           {/* <IconButton sx={{color: 'black'}}>
              <MenuOutlined />

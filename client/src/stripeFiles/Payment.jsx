@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import {loadStripe} from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 import CheckoutForm from "./CheckoutForm";
-import {Elements} from '@stripe/react-stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import { useSelector } from "react-redux";
-import { Box, Divider, Typography} from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 import styled from '@emotion/styled';
 
 const FlexBox = styled(Box)`
@@ -17,16 +17,19 @@ const Payment = () => {
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
   const cart = useSelector(state => state.cart);
+  const customer = useSelector(state => state.customer);
+  console.log(customer);
+  const displayName = customer[0].name.charAt(0).toUpperCase() + customer[0].name.substring(1);
 
   let totalPrice = cart.reduce((total, item) => {
     return total + item.count * item.unitAmount
   }, 0);
 
-  totalPrice = totalPrice/100 + '.00';
+  totalPrice = totalPrice / 100 + '.00';
 
   useEffect(() => {
     fetch('/api/v1/config').then(async r => {
-      const {publishableKey} = await r.json();
+      const { publishableKey } = await r.json();
       setStripePromise(loadStripe(publishableKey));
     })
   }, []);
@@ -36,7 +39,7 @@ const Payment = () => {
     fetch("/api/v1/create-payment-intent", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({amount: 25000, currency: 'usd'}),
+      body: JSON.stringify({ amount: 25000, currency: 'usd' }),
     }).then(async (result) => {
       let { clientSecret } = await result.json();
       setClientSecret(clientSecret);
@@ -44,8 +47,9 @@ const Payment = () => {
   }, []);
 
   return (
-    <div style={{marginTop: '60px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column'}}>
-      <h1>Add Payment Information</h1>
+    <div style={{ marginTop: '60px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+      <h1>Thank You For Shopping With Us, {displayName}!</h1>
+      <h3>Order Number: {customer[0]?._id}</h3>
       <Box>
         {cart.map(item => (
           <Box key={`${item.name}-${item._id}`}>
@@ -66,7 +70,7 @@ const Payment = () => {
                 </FlexBox>
                 <Typography >{item.description}</Typography>
                 <FlexBox m='15px 0'>
-                  <Box 
+                  <Box
                     display='flex'
                     alignItems='center'
                   >
@@ -84,7 +88,7 @@ const Payment = () => {
       </Box>
       <Typography mt={2} variant='h3' fontWeight='bold'>Total Price: ${totalPrice}</Typography>
       {clientSecret && stripePromise && (
-        <Elements stripe={stripePromise} options={{ clientSecret}}>
+        <Elements stripe={stripePromise} options={{ clientSecret }}>
           <CheckoutForm />
         </Elements>
       )}

@@ -55,6 +55,7 @@ const Checkout = () => {
     try {
       //if async data fetch fells, the error below is an axios error
       const { data } = await customFetch.post('/auth/register', instanceData);
+      console.log(data.user);
       dispatch(getCustomer({ customer: data.user }))
     } catch (error) {
       //an axios error whose message can be overwritten

@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import {Button, Dialog, DialogContent, DialogContentText, DialogTitle} from '@mui/material';
+import { Button, Dialog, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { removeCustomer, emptyCart } from '../state';
 import { useNavigate } from 'react-router-dom';
 
 const CustomerInfo = (props) => {
-  
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -45,7 +45,7 @@ const CustomerInfo = (props) => {
         </DialogTitle>
         <DialogContent >
           <DialogContentText fontWeight='bold' id="alert-dialog-description">
-            Email: {props.email} 
+            Email: {props.email}
           </DialogContentText>
         </DialogContent>
         <DialogContent>
@@ -56,6 +56,11 @@ const CustomerInfo = (props) => {
         <DialogContent>
           <DialogContentText fontWeight='bold' id="alert-dialog-description">
             Zip Code: {props.zipCode}
+          </DialogContentText>
+        </DialogContent>
+        <DialogContent>
+          <DialogContentText fontWeight='bold' id="alert-dialog-description">
+            Order Number: {props.orderNumber}
           </DialogContentText>
         </DialogContent>
         <Button

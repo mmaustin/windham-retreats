@@ -22,7 +22,7 @@ const MessageSchema = new mongoose.Schema({
       /^\d{3}-\d{3}-\d{4}$/,
       'Please provide a valid phone number.'
     ]
-  }
+  },
 },
   { timestamps: true }
 );
