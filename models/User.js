@@ -1,9 +1,18 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  name: String,
-  lastName: String,
-  email: String,
+  name: {
+    type: String,
+    required: [true, 'Please include your name.']
+  },
+  lastName: {
+    type: String,
+    required: [true, 'Please include your last name.']
+  },
+  email: {
+    type: String,
+    required: [true, 'Please include your email.']
+  },
   phoneNumber: {
     type: String,
     required: [true, 'Please include your phone number.'],
@@ -14,12 +23,12 @@ const UserSchema = new mongoose.Schema({
   },
   zipCode: {
     type: String,
+    required: [true, 'Please include your zip code'],
     match: [
       /^\d{5}/,
       'Please provide a valid zip code.'
     ]
   },
-  // password: String,
   role: {
     type: String,
     enum: ['user', 'admin'],
@@ -29,10 +38,10 @@ const UserSchema = new mongoose.Schema({
   { timestamps: true }
 );
 
-UserSchema.methods.toJSON = function () {
-  let obj = this.toObject();
-  delete obj.password;
-  return obj;
-}
+// UserSchema.methods.toJSON = function () {
+//   let obj = this.toObject();
+//   delete obj.password;
+//   return obj;
+// }
 
 module.exports = mongoose.model('User', UserSchema);
