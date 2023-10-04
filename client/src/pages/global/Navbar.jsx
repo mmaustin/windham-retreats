@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { PersonOutline, ShoppingBagOutlined, MenuOutlined, SearchOutlined } from '@mui/icons-material';
+import { ShoppingBagOutlined } from '@mui/icons-material';
 import { Badge, Box, IconButton } from '@mui/material';
 import { shades } from '../../theme';
-import { setIsCartOpen, removeCustomer } from '../../state';
+import { setIsCartOpen } from '../../state';
 import CustomerInfo from '../../components/CustomerInfo';
 
 const Navbar = () => {
