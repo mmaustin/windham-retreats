@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Add, Remove } from "@mui/icons-material";
 import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
 import { useState } from "react";
@@ -7,14 +8,14 @@ import { addToCart } from "../state";
 import { useNavigate } from "react-router-dom";
 
 
-const Item = ({item}) => { 
+const Item = ({ item }) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
   const {
-    palette: {neutral },
+    palette: { neutral },
   } = useTheme();
 
   const { displayAmount, name, picturePath, _id } = item;
@@ -24,16 +25,16 @@ const Item = ({item}) => {
     <Box  >
       <Box
         position='relative'
-        onMouseOver={()=> setIsHovered(true)}
-        onMouseOut={()=> setIsHovered(false)}
+        onMouseOver={() => setIsHovered(true)}
+        onMouseOut={() => setIsHovered(false)}
       >
         <img
           alt={item.name}
           width='300px'
           height='300px'
           src={`../src/assets/${picturePath}`}
-          onClick={()=> navigate(`/item/${item._id}`)}
-          style={{cursor: 'pointer'}}
+          onClick={() => navigate(`/item/${item._id}`)}
+          style={{ cursor: 'pointer' }}
         />
         <Box
           display={isHovered ? 'block' : 'none'}
@@ -51,21 +52,27 @@ const Item = ({item}) => {
               borderRadius='3px'
             >
               <IconButton
-                onClick={()=> setCount(Math.max(count -1, 1))}
+                onClick={() => setCount(Math.max(count - 1, 1))}
               >
                 <Remove />
               </IconButton>
               <Typography color={shades.primary[300]}>{count}</Typography>
-              <IconButton
-                onClick={()=> setCount(count + 1)}
-              >
-                <Add />
-              </IconButton>              
+              {count < 2 ? (
+                <IconButton
+                  onClick={() => setCount(count + 1)}
+                >
+                  <Add />
+                </IconButton>
+              ) : (
+                <IconButton>
+                  <Add />
+                </IconButton>
+              )
+              }
             </Box>
-
             <Button
-              onClick={()=> {dispatch(addToCart({item: {...item, count}}))}}
-              sx={{backgroundColor: shades.primary[300], color: 'white'}}
+              onClick={() => { dispatch(addToCart({ item: { ...item, count } })) }}
+              sx={{ backgroundColor: shades.primary[300], color: 'white' }}
             >
               Add To Cart
             </Button>

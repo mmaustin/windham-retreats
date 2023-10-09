@@ -16,21 +16,21 @@ const ShoppingList = () => {
   // const handleChange = (event, newValue) => {
   //   setValue(newValue);
   //}
-  
-  const getRetreats = async() => {
-    try { 
+
+  const getRetreats = async () => {
+    try {
       const response = await customFetch.get("/retreats");
-    
+
       //const { response.data } //= await response.json();
       const data = response.data.retreats
-      dispatch(setItems({items: data}))
+      dispatch(setItems({ items: data }))
     } catch (error) {
       console.log(error);
     }
   }
 
   //Once I'm set on how to properly handle prices, 2:03 in the video shows how I can filter by price
-  
+
   useEffect(() => {
     getRetreats();
   }, []); //eslint-disable-line react-hooks/exhaustive-deps
@@ -38,14 +38,14 @@ const ShoppingList = () => {
   return (
     <Box width="80%" margin="80px auto">
       <Typography variant="h3" textAlign='center'>
-        Our Featured Products
+        My Spaces
       </Typography>
       <Tabs
         textColor='primary'
         indicatorColor='primary'
         value={value}
         centered
-        TabIndicatorProps={{sx: {display: isNonMobile ? 'block' : 'none'}}}
+        TabIndicatorProps={{ sx: { display: isNonMobile ? 'block' : 'none' } }}
         sx={{
           m: '25px',
           "& .MuiTabs-flexContainer": {
