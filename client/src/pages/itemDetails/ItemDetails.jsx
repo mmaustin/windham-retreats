@@ -22,8 +22,6 @@ const ItemDetails = () => {
     setRetreat(pageRetreat);
   }, [pageRetreat]);
 
-  console.log(retreat);
-
   return (
     <Box width='80%' m='80px auto 0px auto'>
       <Box display='flex' flexWrap='wrap' columnGap='40px'>
@@ -68,18 +66,32 @@ const ItemDetails = () => {
                 <Add />
               </IconButton>
             </Box>
-            <Button
-              sx={{
-                backgroundColor: '#222222',
-                color: 'white',
-                borderRadius: 0,
-                minWidth: '150px',
-                padding: '10px 40px'
-              }}
-              onClick={() => dispatch(addToCart({ item: { ...retreat, count } }))}
-            >
-              ADD TO CART
-            </Button>
+            {count < 3 ? (
+              <Button
+                sx={{
+                  backgroundColor: '#222222',
+                  color: 'white',
+                  borderRadius: 0,
+                  minWidth: '150px',
+                  padding: '10px 40px'
+                }}
+                onClick={() => dispatch(addToCart({ item: { ...retreat, count } }))}
+              >
+                ADD TO CART
+              </Button>
+            ) :
+              <Button
+                sx={{
+                  backgroundColor: '#222222',
+                  color: 'white',
+                  borderRadius: 0,
+                  minWidth: '150px',
+                  padding: '10px 40px'
+                }}
+              >
+                Limit Of 2 Rooms
+              </Button>
+            }
           </Box>
         </Box>
         <MessageForm />
