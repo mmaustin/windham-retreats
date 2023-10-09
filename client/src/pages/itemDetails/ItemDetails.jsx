@@ -11,7 +11,7 @@ import MessageForm from "../global/MessageForm";
 const ItemDetails = () => {
 
   const dispatch = useDispatch();
-  const {itemId} = useParams();
+  const { itemId } = useParams();
   const [count, setCount] = useState(1);
   const [retreat, setRetreat] = useState(null);
   //const [items, setItems] = useState([]);
@@ -27,14 +27,14 @@ const ItemDetails = () => {
   return (
     <Box width='80%' m='80px auto 0px auto'>
       <Box display='flex' flexWrap='wrap' columnGap='40px'>
-        
+
         <Box flex='1 1 40%' mb='40px'>
           <img
             alt={retreat?.name}
             width='100%'
             height='100%'
             src={`../src/assets/${retreat?.picturePath}`}
-            style={{objectFit: 'contain'}}
+            style={{ objectFit: 'contain' }}
           />
         </Box>
 
@@ -45,7 +45,7 @@ const ItemDetails = () => {
 
           <Box display='50px 0 25px 0'>
             <Typography variant="h4">{retreat?.description}</Typography>
-            <Typography sx={{mt: '20px'}} variant="h4">{retreat?.displayAmount}</Typography>
+            <Typography sx={{ mt: '20px' }} variant="h4">{retreat?.displayAmount}</Typography>
           </Box>
 
           <Box display='flex' alignItems='center' minHeight='50px'>
@@ -57,16 +57,16 @@ const ItemDetails = () => {
               p='2px 5px'
             >
               <IconButton
-                onClick={()=> setCount(Math.max(count -1, 1))}
+                onClick={() => setCount(Math.max(count - 1, 1))}
               >
                 <Remove />
               </IconButton>
-              <Typography sx={{p: '0 px'}}>{count}</Typography>
+              <Typography sx={{ p: '0 px' }}>{count}</Typography>
               <IconButton
-                onClick={()=> setCount(count + 1)}
+                onClick={() => setCount(count + 1)}
               >
                 <Add />
-              </IconButton>              
+              </IconButton>
             </Box>
             <Button
               sx={{
@@ -76,7 +76,7 @@ const ItemDetails = () => {
                 minWidth: '150px',
                 padding: '10px 40px'
               }}
-              onClick={()=> dispatch(addToCart({item: {...retreat, count}}))}
+              onClick={() => dispatch(addToCart({ item: { ...retreat, count } }))}
             >
               ADD TO CART
             </Button>
