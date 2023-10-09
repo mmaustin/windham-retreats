@@ -71,6 +71,7 @@ const Checkout = () => {
   }
 
   return (
+
     <Box width='80%' m='100px auto'>
       <Stepper activeStep={activeStep} sx={{ m: '20px o' }}>
         <Step>
@@ -189,56 +190,60 @@ const Checkout = () => {
                   alignItems: 'center',
                 }}
               >
-                <Typography sx={{ mb: '15px' }} fontSize='18px'>
-                  Customer Confirmation
-                </Typography>
-                {cart.map(item => (
-                  <Box key={`${item?.name}-${item?._id}`}>
-                    <FlexBox p='15px 0' >
-                      <Box flex='1 1 40%'>
-                        <img
-                          src={`../../src/assets/${item?.picturePath}`}
-                          alt={item?.name}
-                          height='164px'
-                          width='123px'
-                        />
-                      </Box>
-                      <Box flex='1 1 60%'>
-                        <FlexBox mb='5px'>
-                          <Typography fontWeight='bold'>
-                            {item?.name}
-                          </Typography>
-                        </FlexBox>
-                        <Typography >{item?.description}</Typography>
-                        <FlexBox m='15px 0'>
-                          <Box
-                            display='flex'
-                            alignItems='center'
-                          >
-                            <Typography variant='h4' fontWeight='bold'>{item?.count}</Typography>
+                <div style={{ marginTop: '60px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', border: 1 }}>
+                  <Typography sx={{ mb: '15px' }} fontSize='18px'>
+                    Customer Confirmation
+                  </Typography>
+                  <Box>
+                    {cart.map(item => (
+                      <Box key={`${item?.name}-${item?._id}`}>
+                        <FlexBox p='15px 0' >
+                          <Box flex='1 1 40%'>
+                            <img
+                              src={`../../src/assets/${item?.picturePath}`}
+                              alt={item?.name}
+                              height='164px'
+                              width='123px'
+                            />
                           </Box>
-                          <Typography fontWeight='bold'>
-                            {item.displayAmount}
-                          </Typography>
+                          <Box flex='1 1 60%'>
+                            <FlexBox mb='5px'>
+                              <Typography fontWeight='bold'>
+                                {item?.name}
+                              </Typography>
+                            </FlexBox>
+                            <Typography >{item?.description}</Typography>
+                            <FlexBox m='15px 0'>
+                              <Box
+                                display='flex'
+                                alignItems='center'
+                              >
+                                <Typography variant='h4' fontWeight='bold'>{item?.count}</Typography>
+                              </Box>
+                              <Typography fontWeight='bold'>
+                                {item.displayAmount}
+                              </Typography>
+                            </FlexBox>
+                          </Box>
                         </FlexBox>
+                        <Divider />
                       </Box>
-                    </FlexBox>
-                    <Typography mt={2} variant='h3' fontWeight='bold'>Total Price: ${totalPrice}</Typography>
-                    <Divider />
+                    ))}
                   </Box>
-                ))}
-                <Typography variant='h3'>
-                  If Correct
-                </Typography>
-                <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/payment')}>
-                  Proceed To Order
-                </Button>
-                <Typography variant='h3'>
-                  Otherwise:
-                </Typography>
-                <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/')}>
-                  Continue Shopping
-                </Button>
+                  <Typography mt={2} variant='h3' fontWeight='bold'>Total Price: ${totalPrice}</Typography>
+                  <Typography variant='h3'>
+                    If Correct
+                  </Typography>
+                  <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/payment')}>
+                    Proceed To Order
+                  </Button>
+                  <Typography variant='h3'>
+                    Otherwise:
+                  </Typography>
+                  <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/')}>
+                    Continue Shopping
+                  </Button>
+                </div>
               </Box>
             </Box>
           </Box>
