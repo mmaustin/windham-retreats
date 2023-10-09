@@ -60,11 +60,18 @@ const ItemDetails = () => {
                 <Remove />
               </IconButton>
               <Typography sx={{ p: '0 px' }}>{count}</Typography>
-              <IconButton
-                onClick={() => setCount(count + 1)}
-              >
-                <Add />
-              </IconButton>
+              {count < 2 ? (
+                <IconButton
+                  onClick={() => setCount(count + 1)}
+                >
+                  <Add />
+                </IconButton>
+              ) : (
+                <IconButton>
+                  <Add />
+                </IconButton>
+              )
+              }
             </Box>
             {count < 3 ? (
               <Button
