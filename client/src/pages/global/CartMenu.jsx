@@ -92,12 +92,18 @@ const CartMenu = () => {
                           <Remove />
                         </IconButton>
                         <Typography>{item.count}</Typography>
-                        {item.count < 2 &&
+                        {item.count < 2 ? (
                           <IconButton
                             onClick={() => dispatch(increaseCount({ id: item._id }))}
                           >
                             <Add />
                           </IconButton>
+                        ) : (
+                          <IconButton
+                          >
+                            <Add />
+                          </IconButton>
+                        )
                         }
                       </Box>
                       <Typography fontWeight='bold'>
