@@ -109,10 +109,10 @@ const MainCarousel = () => {
             margin={isNonMobile ? undefined : '0 auto'}
             maxWidth={isNonMobile ? undefined : '240px'}
           >
-            <Typography color={shades.secondary[200]}>YOGA RETREATS</Typography>
-            <Typography variant='h2'>rediscover yourself</Typography>
+            <Typography variant='h3' color={shades.secondary[200]}>WINDHAM RETREATS</Typography>
+            {/* <Typography variant='h2'>rediscover yourself</Typography> */}
           </Box>
-          <p className='legend'>Retreat 2</p>
+          <p className='legend'>RELAXING SOLITUDE</p>
         </div>
         <div>
           <img src={carouselPictures.retreat3} alt='two'
@@ -136,10 +136,10 @@ const MainCarousel = () => {
             margin={isNonMobile ? undefined : '0 auto'}
             maxWidth={isNonMobile ? undefined : '240px'}
           >
-            <Typography color={shades.secondary[200]}>YOGA RETREATS</Typography>
+            <Typography variant='h3' color={shades.secondary[200]}>WINDHAM RETREATS</Typography>
             {/* <Typography variant='h2'>rediscover yourself</Typography> */}
           </Box>
-          <p className='legend'>Retreat Three</p>
+          <p className='legend'>SUNNY DAYS, STARRY NIGHTS</p>
         </div>
       </Carousel>
     </div>
