@@ -39,7 +39,7 @@ const Navbar = () => {
           sx={{ "&:hover": { cursor: 'pointer' } }}
           color={shades.secondary[500]}
         >
-          WINDHAM YOGA
+          WINDHAM RETREATS
         </Box>
         <Box
           display='flex'
