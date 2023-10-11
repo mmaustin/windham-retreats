@@ -5,6 +5,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { useSelector } from "react-redux";
 import { Box, Divider, Typography } from '@mui/material';
 import styled from '@emotion/styled';
+import { shades } from "../theme";
 
 const FlexBox = styled(Box)`
   display: flex;
@@ -49,7 +50,7 @@ const Payment = () => {
   return (
     <div style={{ marginTop: '60px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       <h1>Thank You For Shopping With Us, {displayName}!</h1>
-      <h3>Order Number: {customer[0]?._id}</h3>
+      <Typography variant="h4" color={shades.secondary[500]}>Order Number: {customer[0]?._id}</Typography>
       <Box>
         {cart.map(item => (
           <Box key={`${item.name}-${item._id}`}>
@@ -62,13 +63,13 @@ const Payment = () => {
                   width='123px'
                 />
               </Box>
-              <Box flex='1 1 60%'>
+              <Box marginLeft='10px' flex='1 1 60%'>
                 <FlexBox mb='5px'>
                   <Typography fontWeight='bold'>
                     {item.name}
                   </Typography>
                 </FlexBox>
-                <Typography >{item.description}</Typography>
+                <Typography >{item.description.toUpperCase()}</Typography>
                 <FlexBox m='15px 0'>
                   <Box
                     display='flex'

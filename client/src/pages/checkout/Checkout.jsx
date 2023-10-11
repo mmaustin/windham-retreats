@@ -171,7 +171,7 @@ const Checkout = () => {
                     variant="contained"
                     sx={{ mt: 3, mb: 2 }}
                   >
-                    Submit & Confirmation
+                    Submit
                   </Button>
                 </Box>
               </Box>
@@ -191,7 +191,7 @@ const Checkout = () => {
                 }}
               >
                 <div style={{ marginTop: '60px', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', border: 1 }}>
-                  <Typography sx={{ mb: '15px' }} fontSize='18px'>
+                  <Typography color={shades.secondary[500]} sx={{ mb: '15px' }} fontSize='18px'>
                     Customer Confirmation
                   </Typography>
                   <Box>
@@ -212,7 +212,7 @@ const Checkout = () => {
                                 {item?.name}
                               </Typography>
                             </FlexBox>
-                            <Typography >{item?.description}</Typography>
+                            <Typography >{item?.description.toUpperCase()}</Typography>
                             <FlexBox m='15px 0'>
                               <Box
                                 display='flex'
@@ -230,19 +230,19 @@ const Checkout = () => {
                       </Box>
                     ))}
                   </Box>
-                  <Typography mt={2} variant='h3' fontWeight='bold'>Total Price: ${totalPrice}</Typography>
-                  <Typography variant='h3'>
+                  <Typography mt={2} mb={4} variant='h3' fontWeight='bold'>Total Price: ${totalPrice}</Typography>
+                  <Typography color={shades.secondary[500]} variant='h3'>
                     If Correct
                   </Typography>
                   <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/payment')}>
                     Proceed To Order
                   </Button>
-                  <Typography variant='h3'>
+                  {/* <Typography color={shades.secondary[500]} variant='h3'>
                     Otherwise:
                   </Typography>
                   <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/')}>
                     Continue Shopping
-                  </Button>
+                  </Button> */}
                 </div>
               </Box>
             </Box>

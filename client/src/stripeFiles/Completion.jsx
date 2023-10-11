@@ -32,7 +32,7 @@ const Completion = () => {
       }}
     >
       <Typography sx={{ m: '100px 0 0 0' }} color={shades.secondary[500]} variant='h3' fontWeight='bold' >
-        Your Transaction Was Successful! Thank You For Choosing Windham Yoga!
+        Your Transaction Was Successful! Thank You For Choosing Windham Retreats!
       </Typography>
     </Box>
   )
