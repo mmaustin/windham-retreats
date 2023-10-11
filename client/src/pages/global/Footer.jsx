@@ -1,10 +1,10 @@
-import { Box, useTheme, Typography} from "@mui/material";
+import { Box, useTheme, Typography } from "@mui/material";
 import { shades } from "../../theme";
 
 
 const Footer = () => {
 
-  const {palette: {info }} = useTheme();
+  const { palette: { info } } = useTheme();
 
   return (
     <Box mt='70px' p='40px 0' bgcolor={info.light}>
@@ -19,16 +19,16 @@ const Footer = () => {
       >
         <Box width='clamp(20%, 30%, 40%)'>
           <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
-            Windham Yoga
+            Windham Retreats
           </Typography>
           <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
-            Situation in the lovely Catskills Mountains, this hill-top lodge is the perfect getaway for peaceful connection with nature.
+            Situation in the lovely Catskills Mountains
           </Typography>
         </Box>
 
         <Box width='clamp(20%, 30%, 40%)'>
           <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
-            Curator: Erica Ahse, PhD
+            Curator: Your Host, PhD
           </Typography>
           <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
             Location: Windham, New York
@@ -36,9 +36,6 @@ const Footer = () => {
         </Box>
 
         <Box width='clamp(20%, 30%, 40%)'>
-          <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
-            Contact Us:
-          </Typography>
           <Typography variant='h4' fontWeight='bold' mb='30px' color={shades.secondary[500]}>
             555-555-5555
           </Typography>

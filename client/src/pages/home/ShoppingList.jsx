@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import customFetch from "../../utils/customFetch";
 import { Tabs, Tab, Box, Typography, useMediaQuery } from "@mui/material";
 import Item from "../../components/Item";
-
+import { shades } from "../../theme";
 
 
 const ShoppingList = () => {
@@ -37,8 +37,8 @@ const ShoppingList = () => {
 
   return (
     <Box width="80%" margin="80px auto">
-      <Typography variant="h3" textAlign='center'>
-        My Spaces
+      <Typography variant="h2" fontWeight='bold' textAlign='center' color={shades.secondary[200]}>
+        WINDHAM RETREATS
       </Typography>
       <Tabs
         textColor='primary'
@@ -53,7 +53,7 @@ const ShoppingList = () => {
           }
         }}
       >
-        <Tab label="All" value="all" />
+        <Tab label="RETREATS ON VIEW (TWO EACH: SIX TOTAL)" value="all" />
       </Tabs>
       <Box
         margin="0 auto"

@@ -206,7 +206,7 @@ const Checkout = () => {
                               width='123px'
                             />
                           </Box>
-                          <Box flex='1 1 60%'>
+                          <Box marginLeft='10px' flex='1 1 60%'>
                             <FlexBox mb='5px'>
                               <Typography fontWeight='bold'>
                                 {item?.name}
