@@ -6,7 +6,6 @@ import getFormValues from '../../utils/getFormValues';
 import { getCustomer } from '../../state';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
-// import MessageForm from '../global/MessageForm';
 import { shades } from '../../theme';
 
 const FlexBox = styled(Box)`
@@ -54,12 +53,10 @@ const Checkout = () => {
     }
 
     try {
-      //if async data fetch fells, the error below is an axios error
       const { data } = await customFetch.post('/auth/register', instanceData);
       console.log(data.user);
       dispatch(getCustomer({ customer: data.user }))
     } catch (error) {
-      //an axios error whose message can be overwritten
       if (error) {
         error.message = 'Check Phone Number & Zip Code Format'
         setErrorMessage(error.message);
@@ -108,7 +105,6 @@ const Checkout = () => {
                   <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
                       <TextField
-                        // autoComplete="given-name"
                         name="name"
                         required
                         fullWidth
@@ -126,7 +122,6 @@ const Checkout = () => {
                         label="Last Name"
                         name="lastName"
                         type='text'
-                      // autoComplete="family-name"
                       />
                     </Grid>
                     <Grid item xs={12}>
@@ -149,7 +144,6 @@ const Checkout = () => {
                         label="Phone Number"
                         type="text"
                         id="phoneNumber"
-                      // autoComplete="new-password"
                       />
                     </Grid>
                     <Grid item xs={12}>
@@ -161,7 +155,6 @@ const Checkout = () => {
                         label="Zip Code"
                         type="text"
                         id="zipCode"
-                      // autoComplete="new-password"
                       />
                     </Grid>
                   </Grid>
@@ -237,18 +230,11 @@ const Checkout = () => {
                   <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/payment')}>
                     Proceed To Order
                   </Button>
-                  {/* <Typography color={shades.secondary[500]} variant='h3'>
-                    Otherwise:
-                  </Typography>
-                  <Button type='button' variant='contained' sx={{ mt: 3, mb: 2 }} onClick={() => navigate('/')}>
-                    Continue Shopping
-                  </Button> */}
                 </div>
               </Box>
             </Box>
           </Box>
         )}
-        {/* <MessageForm /> */}
       </Box>
     </Box>
   )
