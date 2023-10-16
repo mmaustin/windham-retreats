@@ -14,8 +14,12 @@
 
 #### No User Authentication or Authorization -- not a mistake
 
--- Though I set up the backend functionality for user authentication, such functionality was not desired by my friend.  After the project became, essentially, a vehicle for me to experiment with Stripe, I continued without authentication, because it posed an interesting challenge: how to clear the cart, if the current user--still retrieved from the MongoDB database--decided they wanted to end the session.  I achieved this via Redux, Redux Persist.
+-- Though I set up the backend functionality for user authentication, such functionality was not desired by my friend.  After the project became, essentially, a vehicle for me to experiment with Stripe, I continued without authentication, because it posed an interesting challenge: how to clear the cart, if the current user--still retrieved from the MongoDB database--decided they wanted to end the session.  I achieved this, to some degree, via Redux, Redux Persist.
 
 ##### Github repository
 
 -- [Windham Retreats Repo](https://github.com/mmaustin/windham-retreats)
+
+###### Demo
+
+-- [Windham Retreats Demo](https://watch.screencastify.com/v/Suxd8AynSUCAH74p51FK)
