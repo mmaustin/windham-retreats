@@ -14,12 +14,9 @@ const Item = ({ item }) => {
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
-  // const {
-  //   palette: { neutral },
-  // } = useTheme();
 
+  // eslint-disable-next-line no-unused-vars
   const { displayAmount, name, picturePath, _id } = item;
-  //console.log(typeof _id);
 
   return (
     <Box  >
