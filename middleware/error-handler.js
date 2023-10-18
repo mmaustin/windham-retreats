@@ -1,7 +1,6 @@
 const { StatusCodes } = require("http-status-codes");
 
 const errorHandlerMiddleware = (err, req, res, next) => {
-  //console.log(err);
   const defaultError = {
     statusCode: err.statusCode || StatusCodes.INTERNAL_SERVER_ERROR,
     msg: err.message || `Object doesn't appear to exist.`,
@@ -16,7 +15,6 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     defaultError.statusCode = StatusCodes.BAD_REQUEST
     defaultError.msg = `${Object.keys(err.keyValue)} field has to be unique`
   }
-  //console.log(defaultError.msg);
   res.status(defaultError.statusCode).json({ msg: defaultError.msg })
 }
 
