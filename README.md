@@ -23,3 +23,4 @@
 ###### Demo
 
 -- [Windham Retreats Demo](https://watch.screencastify.com/v/Suxd8AynSUCAH74p51FK)
+   ## Run Locally: npm run dev
